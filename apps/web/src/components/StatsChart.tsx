@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { getWeightUnit } from '../lib/unit-conversion';
@@ -133,7 +133,7 @@ export default function StatsChart({
   };
 
   return (
-    <div className="bg-card rounded-xl p-4 shadow-sm aspect-[4/3]">
+    <div className="bg-card  p-4 shadow-sm aspect-[4/3]">
       <div className="h-full">
         <Line data={data} options={options as any} />
       </div>
