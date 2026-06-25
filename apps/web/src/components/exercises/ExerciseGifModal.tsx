@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../../providers/auth-provider';
@@ -118,7 +118,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
                 return prevMinutes - 1;
               } else {
                 // Both are 0 - timer completed!
-                console.log('✅ Timer countdown finished - reached 0:00 inside interval');
+                console.log('âœ… Timer countdown finished - reached 0:00 inside interval');
                 newSecondsValue = 0;
                 shouldComplete = true;
                 return 0;
@@ -135,7 +135,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
               // Then update state
               setIsTimerRunning(false);
               setTimerCompleted(true);
-              console.log('✅ Timer completion state set');
+              console.log('âœ… Timer completion state set');
             }
             
             return newSecondsValue;
@@ -160,7 +160,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
   // Additional check: if timer reaches 0 while not running and wasn't paused, trigger completion
   useEffect(() => {
     if (!isTimerRunning && timerMinutes === 0 && timerSeconds === 0 && !timerCompleted && !wasPaused.current && initialTimerMinutes.current > 0) {
-      console.log('✅ Timer reached 0:00 via state check - triggering completion');
+      console.log('âœ… Timer reached 0:00 via state check - triggering completion');
       setTimerCompleted(true);
     }
   }, [isTimerRunning, timerMinutes, timerSeconds, timerCompleted]);
@@ -168,7 +168,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
   // Debug: Log when timer reaches 0:00 to help diagnose issues
   useEffect(() => {
     if (!isTimerRunning && timerMinutes === 0 && timerSeconds === 0) {
-      console.log('🔍 Timer reached 0:00 - state check', {
+      console.log('ðŸ” Timer reached 0:00 - state check', {
         timerCompleted,
         hasLoggedWorkout: hasLoggedWorkout.current,
         wasPaused: wasPaused.current,
@@ -182,7 +182,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
 
   // Separate effect to trigger logging when timerCompleted state changes
   useEffect(() => {
-    console.log('🔍 timerCompleted effect triggered', {
+    console.log('ðŸ” timerCompleted effect triggered', {
       timerCompleted,
       hasLoggedWorkout: hasLoggedWorkout.current,
       wasPaused: wasPaused.current,
@@ -194,12 +194,12 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
     if (timerCompleted && !hasLoggedWorkout.current && !wasPaused.current && user?.uid) {
       const hasInitialValue = initialTimerMinutes.current > 0 || (initialTimerMinutes.current === 0 && initialTimerSeconds.current > 0);
       
-      console.log('🔍 Checking conditions for logging', { hasInitialValue });
+      console.log('ðŸ” Checking conditions for logging', { hasInitialValue });
       
       if (hasInitialValue) {
         hasLoggedWorkout.current = true;
         
-        console.log('✅ Timer completed (via timerCompleted state) - logging workout', {
+        console.log('âœ… Timer completed (via timerCompleted state) - logging workout', {
           initialMinutes: initialTimerMinutes.current,
           initialSeconds: initialTimerSeconds.current,
           exercise: exercise.name
@@ -244,7 +244,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
           notes: `Workout session: ${exercise.name} completed via timer at ${timeStr}`
         });
       } else {
-        console.warn('⚠️ Timer completed but no initial values captured - cannot log workout');
+        console.warn('âš ï¸ Timer completed but no initial values captured - cannot log workout');
       }
     }
   }, [timerCompleted, exercise, user?.uid, logWorkoutMutation]);
@@ -256,7 +256,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
       // Fresh start - capture initial values
       initialTimerMinutes.current = timerMinutes;
       initialTimerSeconds.current = timerSeconds;
-      console.log('✅ Fresh timer start - captured initial values', {
+      console.log('âœ… Fresh timer start - captured initial values', {
         minutes: timerMinutes,
         seconds: timerSeconds,
         exercise: exercise.name
@@ -269,11 +269,11 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
       // If they don't match, it's a resume after pause - don't allow logging
       if (timerMinutes === initialTimerMinutes.current && timerSeconds === initialTimerSeconds.current) {
         // Reset to same initial values - treat as fresh start
-        console.log('✅ Starting after reset with same initial values - will log on completion');
+        console.log('âœ… Starting after reset with same initial values - will log on completion');
         wasPaused.current = false;
       } else {
         // Resuming after pause with different values - don't allow logging
-        console.log('⚠️ Resuming timer after pause - will NOT log on completion');
+        console.log('âš ï¸ Resuming timer after pause - will NOT log on completion');
         wasPaused.current = true;
       }
     }
@@ -399,7 +399,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.25 }}
-        className="relative z-10 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto border border-white/20 dark:border-gray-700/50 my-4 outline-none"
+        className="relative z-10 bg-white dark:bg-gray-800  p-6 shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto border border-white/20 dark:border-gray-700/50 my-4 outline-none"
         role="dialog"
         aria-modal="true"
         aria-label={`${exercise.name} details`}
@@ -420,13 +420,13 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
           {exercise.name}
         </h2>
 
-        <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl overflow-hidden mb-4 max-h-[50vh] border border-gray-200/50 dark:border-gray-700/50">
+        <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900  overflow-hidden mb-4 max-h-[50vh] border border-gray-200/50 dark:border-gray-700/50">
           <div className="absolute top-4 right-4 z-20 flex flex-col gap-2">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleZoomIn}
-              className="w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-200/50 dark:border-gray-700/50"
+              className="w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl  flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-200/50 dark:border-gray-700/50"
               aria-label="Zoom in"
             >
               <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -438,7 +438,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleZoomOut}
-              className="w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-200/50 dark:border-gray-700/50"
+              className="w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl  flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-200/50 dark:border-gray-700/50"
               aria-label="Zoom out"
             >
               <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -450,7 +450,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleResetZoom}
-              className="w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-200/50 dark:border-gray-700/50"
+              className="w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl  flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-200/50 dark:border-gray-700/50"
               aria-label="Reset zoom"
             >
               <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -459,15 +459,15 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
             </motion.button>
           </div>
 
-          <div className="absolute top-4 left-4 z-20 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl px-3 py-2 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+          <div className="absolute top-4 left-4 z-20 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl  px-3 py-2 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
             <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               {Math.round(zoomLevel * 100)}%
             </span>
           </div>
 
-          <div className="absolute bottom-4 left-4 z-20 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl px-3 py-2 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+          <div className="absolute bottom-4 left-4 z-20 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl  px-3 py-2 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
             <span className="text-xs text-gray-600 dark:text-gray-400">
-              Scroll to zoom • Drag to pan
+              Scroll to zoom â€¢ Drag to pan
             </span>
           </div>
 
@@ -497,7 +497,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-4 border border-blue-200/50 dark:border-blue-700/50">
+        <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20  p-4 border border-blue-200/50 dark:border-blue-700/50">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 text-center">
             Exercise Timer
           </h3>
@@ -511,7 +511,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="mb-4 p-3 bg-green-500/10 border border-green-500/30 rounded-lg text-center"
+              className="mb-4 p-3 bg-green-500/10 border border-green-500/30  text-center"
             >
               <div className="flex items-center justify-center gap-2 text-green-600 dark:text-green-400">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -542,7 +542,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
           </div>
 
           <div className="flex flex-wrap gap-3 justify-center">
-            <div className="flex items-center gap-2 bg-white dark:bg-gray-700 rounded-lg px-4 py-2">
+            <div className="flex items-center gap-2 bg-white dark:bg-gray-700  px-4 py-2">
               <label className="text-sm text-gray-600 dark:text-gray-400">Minutes:</label>
               <input
                 type="number"
@@ -560,7 +560,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
               />
             </div>
 
-            <div className="flex items-center gap-2 bg-white dark:bg-gray-700 rounded-lg px-4 py-2">
+            <div className="flex items-center gap-2 bg-white dark:bg-gray-700  px-4 py-2">
               <label className="text-sm text-gray-600 dark:text-gray-400">Seconds:</label>
               <input
                 type="number"
@@ -584,7 +584,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
               <button
                 onClick={handleStartTimer}
                 disabled={timerMinutes === 0 && timerSeconds === 0}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                className="px-6 py-3  bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
@@ -594,7 +594,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
             ) : (
               <button
                 onClick={handleStopTimer}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center gap-2"
+                className="px-6 py-3  bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center gap-2"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-2 0v6a1 1 0 102 0V7z" clipRule="evenodd" />
@@ -605,7 +605,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
             
             <button
               onClick={handleResetTimer}
-              className="px-6 py-3 rounded-xl bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium transition-all duration-200 border border-gray-300 dark:border-gray-600 flex items-center gap-2"
+              className="px-6 py-3  bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium transition-all duration-200 border border-gray-300 dark:border-gray-600 flex items-center gap-2"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
