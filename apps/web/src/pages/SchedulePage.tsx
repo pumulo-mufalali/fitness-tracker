@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../providers/auth-provider';
 import EditDayScheduleForm from '../components/EditDayScheduleForm';
@@ -78,7 +78,7 @@ export default function SchedulePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20 dark:border-gray-700/50 cursor-pointer hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+              className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-xl border border-white/20 dark:border-gray-700/50 cursor-pointer hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
               onClick={() => setEditingDay(day)}
             >
               <div className="text-center mb-6">
@@ -98,11 +98,11 @@ export default function SchedulePage() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: itemIndex * 0.1 }}
-                      className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-600/50 p-3 rounded-xl border border-gray-200/50 dark:border-gray-600/50 hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 transition-all duration-200"
+                      className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-600/50 p-3  border border-gray-200/50 dark:border-gray-600/50 hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 transition-all duration-200"
                     >
                       <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-2">
-                          <div className="bg-blue-500/10 p-1.5 rounded-lg shrink-0">
+                          <div className="bg-blue-500/10 p-1.5  shrink-0">
                             <Clock className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                           </div>
                           <span className="text-xs font-medium text-gray-600 dark:text-gray-300 whitespace-nowrap">{item.time}</span>
