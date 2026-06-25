@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -141,7 +141,7 @@ export default function SignUpForm({ onSuccess, onSwitchToLogin, isLoading: exte
       transition={{ duration: 0.5 }}
       className="w-full max-w-lg mx-auto"
     >
-      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-3xl shadow-2xl p-10 border border-gray-200/50 dark:border-gray-700/50">
+      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl  shadow-2xl p-10 border border-gray-200/50 dark:border-gray-700/50">
         {/* Header */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-black text-gray-900 dark:text-white mb-3">
@@ -168,7 +168,7 @@ export default function SignUpForm({ onSuccess, onSwitchToLogin, isLoading: exte
                 type="text"
                 value={formData.name}
                 onChange={handleInputChange('name')}
-                className={`block w-full pl-12 pr-4 py-4 border-2 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 font-medium ${
+                className={`block w-full pl-12 pr-4 py-4 border-2  focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 font-medium ${
                   errors.name 
                     ? 'border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600' 
                     : 'border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500'
@@ -195,7 +195,7 @@ export default function SignUpForm({ onSuccess, onSwitchToLogin, isLoading: exte
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange('email')}
-                className={`block w-full pl-12 pr-4 py-4 border-2 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 font-medium ${
+                className={`block w-full pl-12 pr-4 py-4 border-2  focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 font-medium ${
                   errors.email 
                     ? 'border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600' 
                     : 'border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500'
@@ -222,7 +222,7 @@ export default function SignUpForm({ onSuccess, onSwitchToLogin, isLoading: exte
                 type={showPassword ? 'text' : 'password'}
                 value={formData.password}
                 onChange={handleInputChange('password')}
-                className={`block w-full pl-12 pr-14 py-4 border-2 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 font-medium ${
+                className={`block w-full pl-12 pr-14 py-4 border-2  focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 font-medium ${
                   errors.password 
                     ? 'border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600' 
                     : 'border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500'
@@ -232,7 +232,7 @@ export default function SignUpForm({ onSuccess, onSwitchToLogin, isLoading: exte
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-4 flex items-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-r-2xl transition-colors duration-200"
+                className="absolute inset-y-0 right-0 pr-4 flex items-center hover:bg-gray-100 dark:hover:bg-gray-700  transition-colors duration-200"
               >
                 {showPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" />
@@ -260,7 +260,7 @@ export default function SignUpForm({ onSuccess, onSwitchToLogin, isLoading: exte
                 type={showConfirmPassword ? 'text' : 'password'}
                 value={formData.confirmPassword}
                 onChange={handleInputChange('confirmPassword')}
-                className={`block w-full pl-12 pr-14 py-4 border-2 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 font-medium ${
+                className={`block w-full pl-12 pr-14 py-4 border-2  focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 font-medium ${
                   errors.confirmPassword 
                     ? 'border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600' 
                     : 'border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500'
@@ -270,7 +270,7 @@ export default function SignUpForm({ onSuccess, onSwitchToLogin, isLoading: exte
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute inset-y-0 right-0 pr-4 flex items-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-r-2xl transition-colors duration-200"
+                className="absolute inset-y-0 right-0 pr-4 flex items-center hover:bg-gray-100 dark:hover:bg-gray-700  transition-colors duration-200"
               >
                 {showConfirmPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" />
@@ -286,7 +286,7 @@ export default function SignUpForm({ onSuccess, onSwitchToLogin, isLoading: exte
 
           {/* General Error Message */}
           {errors.general && (
-            <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-2xl p-4">
+            <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800  p-4">
               <p className="text-sm text-red-600 dark:text-red-400 font-medium">{errors.general}</p>
             </div>
           )}
@@ -322,7 +322,7 @@ export default function SignUpForm({ onSuccess, onSwitchToLogin, isLoading: exte
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isFormLoading}
-            className="w-full flex justify-center py-4 px-6 border border-transparent rounded-2xl shadow-xl text-lg font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+            className="w-full flex justify-center py-4 px-6 border border-transparent  shadow-xl text-lg font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
           >
             {isFormLoading ? (
               <div className="flex items-center">
