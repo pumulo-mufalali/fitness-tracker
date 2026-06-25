@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { Line } from "react-chartjs-2";
 import type { WeightEntry } from "../lib/firebase-data-service";
 import { useState } from "react";
@@ -117,7 +117,7 @@ export function WeightChart({ weightHistory, currentWeight, onAddWeight, isAddin
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.1 }}
-      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6"
+      className="bg-white dark:bg-gray-800  shadow-lg p-6"
     >
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-4">
@@ -147,7 +147,7 @@ export function WeightChart({ weightHistory, currentWeight, onAddWeight, isAddin
         <input
           type="number"
           step="0.1"
-          className="flex-1 rounded-lg border-gray-300 dark:border-gray-700 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+          className="flex-1  border-gray-300 dark:border-gray-700 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-gray-700 dark:text-white sm:text-sm"
           placeholder="Enter weight in kg"
           value={newWeight}
           onChange={(e) => setNewWeight(e.target.value)}
@@ -156,7 +156,7 @@ export function WeightChart({ weightHistory, currentWeight, onAddWeight, isAddin
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           type="submit"
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50"
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium  shadow-sm text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50"
           disabled={isAdding || !newWeight}
         >
           {isAdding ? "Adding..." : "Add Entry"}
