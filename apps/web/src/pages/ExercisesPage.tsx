@@ -160,7 +160,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onBack}
-                className="p-3 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200/50 dark:border-gray-700/50"
+                className="p-3  bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200/50 dark:border-gray-700/50"
               >
                 <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -194,7 +194,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
                 onChange={handleSearchChange}
                 placeholder="Search exercises by name or category..."
                 maxLength={MAX_SEARCH_LENGTH}
-                className="w-full pl-12 pr-12 py-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="w-full pl-12 pr-12 py-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50  text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-lg hover:shadow-xl"
               />
               {searchQuery && (
                 <button
@@ -229,7 +229,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="mt-3 flex items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl"
+                  className="mt-3 flex items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 "
                 >
                   <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 flex-shrink-0" />
                   <p className="text-sm text-red-800 dark:text-red-200">{searchError.message}</p>
@@ -274,7 +274,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
                         });
                       }
                     }}
-                    className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-500/50 dark:hover:border-blue-400/50 transition-all duration-300 aspect-square shadow-lg hover:shadow-2xl"
+                    className="group relative overflow-hidden  bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-500/50 dark:hover:border-blue-400/50 transition-all duration-300 aspect-square shadow-lg hover:shadow-2xl"
                   >
                     <img
                       src={exercise.imageUrl}
@@ -311,7 +311,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-16"
           >
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-12 border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl  p-12 border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
               <div className="w-24 h-24 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="w-12 h-12 text-gray-400 dark:text-gray-500" />
               </div>
@@ -323,7 +323,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
               </p>
               <button
                 onClick={clearSearch}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-xl"
               >
                 Clear Search & Show All
               </button>
