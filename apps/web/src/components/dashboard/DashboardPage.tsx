@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import HeaderBar from '../HeaderBar';
 import ExerciseBrowser from '../exercises/ExerciseBrowser';
 import TodaysSchedule from '../TodaysSchedule';
@@ -25,7 +25,7 @@ export default function DashboardPage({
 }: DashboardPageProps) {
   return (
     <>
-      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
+      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl  p-8 shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
         <HeaderBar title="FITNESS TRACKER" onNav={onNav} />
       </div>
 
