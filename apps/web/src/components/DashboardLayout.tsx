@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, useCallback, useState } from 'react';
+﻿import React, { useEffect, useRef, useMemo, useCallback, useState } from 'react';
 import Sidebar from './Sidebar';
 import { useAuth } from '../providers/auth-provider';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -306,7 +306,7 @@ export default function DashboardLayout({
             <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <div className="lg:col-span-2">
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
                     <MyGoalsPage />
                   </div>
                 </div>
@@ -318,7 +318,7 @@ export default function DashboardLayout({
           ) : centerPage === 'profile' ? (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden">
                   <ProfilePage onClose={() => onNav?.('dashboard')} />
                 </div>
               </div>
@@ -329,7 +329,7 @@ export default function DashboardLayout({
           ) : centerPage === 'schedule' ? (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
                   <SchedulePage />
                 </div>
               </div>
@@ -348,7 +348,7 @@ export default function DashboardLayout({
             <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
                     <AchievementsPage />
                   </div>
                 </div>
@@ -361,7 +361,7 @@ export default function DashboardLayout({
             <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
                     <SettingsPage />
                   </div>
                 </div>
@@ -374,7 +374,7 @@ export default function DashboardLayout({
             <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
                     <WorkoutLogsPage />
                   </div>
                 </div>
@@ -441,9 +441,9 @@ export default function DashboardLayout({
           {showEditInfoDialog && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
               <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setShowEditInfoDialog(false)} />
-              <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl w-full max-w-md border border-white/20 dark:border-gray-700/50">
+              <div className="relative bg-white dark:bg-gray-800  p-8 shadow-2xl w-full max-w-md border border-white/20 dark:border-gray-700/50">
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                  <div className="w-12 h-12  bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -456,16 +456,16 @@ export default function DashboardLayout({
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                     To edit your schedule, simply click on any day card in your weekly schedule. You can add, modify, or remove activities for each day.
                   </p>
-                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-4 rounded-xl border border-blue-200 dark:border-blue-700">
+                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-4  border border-blue-200 dark:border-blue-700">
                     <p className="text-sm text-blue-700 dark:text-blue-300">
-                      💡 Tip: You can click on any day (Monday through Sunday) to open the edit form for that specific day.
+                      ðŸ’¡ Tip: You can click on any day (Monday through Sunday) to open the edit form for that specific day.
                     </p>
                   </div>
                 </div>
                 <div className="mt-6 flex justify-end">
                   <button
                     onClick={() => setShowEditInfoDialog(false)}
-                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
+                    className="px-6 py-3  bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
                   >
                     Got it!
                   </button>
