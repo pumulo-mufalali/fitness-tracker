@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import StatsChart from './StatsChart';
 import { useToast } from '../providers/toast-provider';
@@ -135,13 +135,13 @@ export default function DetailedStatsModal({
         role="dialog"
         aria-modal="true"
         aria-label="Weight progress details"
-        className="bg-card rounded-xl p-6 shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto outline-none"
+        className="bg-card  p-6 shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto outline-none"
         onClick={handleModalContentClick}
         tabIndex={-1}
       >
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold">Weight Progress</h2>
-          <button onClick={onClose} className="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">Close</button>
+          <button onClick={onClose} className="px-4 py-2  bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">Close</button>
         </div>
         <div className="mt-4 text-sm text-gray-100 dark:text-gray-300 mb-4">
           Track your weight progress over the last 3 months. Update your weight to see real-time changes in your chart.
@@ -150,7 +150,7 @@ export default function DetailedStatsModal({
           <div className="lg:col-span-1 space-y-4">
             {/* Weight Update Section */}
             {onUpdateWeight && (
-              <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl border border-green-200 dark:border-green-800">
+              <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20  border border-green-200 dark:border-green-800">
                 <h4 className="text-lg font-semibold text-green-800 dark:text-green-200 mb-3">Update Weight</h4>
                 <div className="mb-2">
                   <span className="text-sm text-green-700 dark:text-green-300">Current Weight: </span>
@@ -162,7 +162,7 @@ export default function DetailedStatsModal({
                       type="number"
                       step="0.1"
                       min="0"
-                      className="w-full px-3 py-2 border border-green-300 dark:border-green-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                      className="w-full px-3 py-2 border border-green-300 dark:border-green-600  bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-green-500"
                       placeholder="Enter new weight (kg)"
                       value={newWeight}
                       onChange={(e) => setNewWeight(e.target.value)}
@@ -174,9 +174,9 @@ export default function DetailedStatsModal({
                     disabled={isUpdating || !newWeight}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold  transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isUpdating ? "Updating..." : isSuccess ? "✓ Updated!" : "Update Weight"}
+                    {isUpdating ? "Updating..." : isSuccess ? "âœ“ Updated!" : "Update Weight"}
                   </motion.button>
                 </form>
               </div>
