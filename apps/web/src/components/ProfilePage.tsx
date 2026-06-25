@@ -1,4 +1,4 @@
-import { UserProfileCard } from './UserProfileCard';
+﻿import { UserProfileCard } from './UserProfileCard';
 import { ThemeToggle } from './theme-toggle';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getUserFromFirestore, updateUserProfile, createInitialUserProfile } from '../lib/firebase-user-service';
@@ -101,7 +101,7 @@ export function ProfilePage({ onClose }: { onClose: () => void }) {
 
       {/* Show error if there's a problem */}
       {error && (
-        <div className="mb-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-2xl p-6">
+        <div className="mb-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800  p-6">
           <p className="text-red-600 dark:text-red-400">Error loading profile. Please try again.</p>
         </div>
       )}
@@ -118,7 +118,7 @@ export function ProfilePage({ onClose }: { onClose: () => void }) {
         <>
           {/* Show helpful message for new users */}
           {(!currentProfile.age || currentProfile.age === 0 || !currentProfile.weightKg || currentProfile.weightKg === 0 || !currentProfile.heightCm || currentProfile.heightCm === 0) && (
-            <div className="mb-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-700 rounded-2xl p-6">
+            <div className="mb-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-700  p-6">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
                   <span className="text-white text-sm font-bold">!</span>
@@ -133,7 +133,7 @@ export function ProfilePage({ onClose }: { onClose: () => void }) {
             </div>
           )}
           
-          <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 dark:border-gray-700/50">
+          <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm  p-6 shadow-lg border border-white/20 dark:border-gray-700/50">
             <UserProfileCard
               profile={currentProfile}
               onUpdateProfile={(updates) => updateProfileMutation.mutate(updates)}
@@ -142,7 +142,7 @@ export function ProfilePage({ onClose }: { onClose: () => void }) {
           </div>
         </>
       ) : (
-        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-2xl p-6 text-center">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800  p-6 text-center">
           <p className="text-red-600 dark:text-red-400">No profile data available.</p>
         </div>
       )}
