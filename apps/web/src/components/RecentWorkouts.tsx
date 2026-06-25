@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import type { Exercise } from "@myfitness/shared";
 import type { WorkoutLog } from "../lib/firebase-data-service";
 import { useState } from "react";
@@ -26,14 +26,14 @@ export function RecentWorkouts({ workouts, exercises }: RecentWorkoutsProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6"
+      className="bg-white dark:bg-gray-800  shadow-lg p-6"
     >
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Recent Workouts</h2>
       
       <div className="relative mb-4">
         <input
           type="text"
-          className="block w-full pl-10 pr-3 py-2 rounded-lg border-gray-300 dark:border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+          className="block w-full pl-10 pr-3 py-2  border-gray-300 dark:border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
           placeholder="Search workouts..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -54,7 +54,7 @@ export function RecentWorkouts({ workouts, exercises }: RecentWorkoutsProps) {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              className="flex items-start space-x-3 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className="flex items-start space-x-3 p-4 bg-gray-50 dark:bg-gray-700/50  hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             >
               <div className={`mt-1 flex-shrink-0 w-2 h-2 rounded-full ${
                 exercise?.category === 'cardio' ? 'bg-red-400' :
