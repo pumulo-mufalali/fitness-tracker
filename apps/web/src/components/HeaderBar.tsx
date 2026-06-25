@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { Play, Timer } from 'lucide-react';
 
@@ -23,7 +23,7 @@ export default function HeaderBar({ title, weekLine, onNav }: { title: string; w
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.4 }}
-                className="text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 px-4 py-2.5 rounded-2xl border border-gray-200 dark:border-gray-700"
+                className="text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 px-4 py-2.5  border border-gray-200 dark:border-gray-700"
               >
                 {weekLine}
               </motion.div>
@@ -43,7 +43,7 @@ export default function HeaderBar({ title, weekLine, onNav }: { title: string; w
                   e.preventDefault();
                   onNav?.('exercises');
                 }}
-                className="group relative px-7 py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 text-white font-bold text-base tracking-wide transition-all duration-300 shadow-2xl hover:shadow-indigo-500/50 border border-white/20 overflow-hidden"
+                className="group relative px-7 py-4  bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 text-white font-bold text-base tracking-wide transition-all duration-300 shadow-2xl hover:shadow-indigo-500/50 border border-white/20 overflow-hidden"
               >
                 {/* Shine effect */}
                 <motion.div
