@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import type { User } from "@myfitness/shared";
 import { useState, useEffect } from "react";
 import { User as UserIcon, Weight, Ruler, Target, Save } from "lucide-react";
@@ -119,9 +119,9 @@ export function UserProfileCard({
       className="space-y-6"
     >
       {/* Profile Header */}
-      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 dark:border-gray-700/50 p-6">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  shadow-xl border border-white/20 dark:border-gray-700/50 p-6">
       <div className="flex items-center space-x-4 mb-6">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+          <div className="w-16 h-16  bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
             {profile.name?.charAt(0) ?? "U"}
         </div>
         <div>
@@ -136,7 +136,7 @@ export function UserProfileCard({
 
         {/* BMI Display */}
         {bmi && bmiCategory && (
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-4 border border-blue-200/50 dark:border-blue-700/50">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20  p-4 border border-blue-200/50 dark:border-blue-700/50">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -160,7 +160,7 @@ export function UserProfileCard({
       </div>
 
       {/* Profile Update Form */}
-      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 dark:border-gray-700/50 p-6">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  shadow-xl border border-white/20 dark:border-gray-700/50 p-6">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
           Update Profile
         </h3>
@@ -177,7 +177,7 @@ export function UserProfileCard({
                 type="number"
                 min="13"
                 max="120"
-                className={`w-full px-4 py-3 rounded-xl border transition-colors focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                className={`w-full px-4 py-3  border transition-colors focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                   errors.age
                     ? "border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600"
                     : "border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
@@ -203,7 +203,7 @@ export function UserProfileCard({
                 min="30"
                 max="300"
                 step="0.1"
-                className={`w-full px-4 py-3 rounded-xl border transition-colors focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                className={`w-full px-4 py-3  border transition-colors focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                   errors.weightKg
                     ? "border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600"
                     : "border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
@@ -230,7 +230,7 @@ export function UserProfileCard({
               type="number"
               min="100"
               max="250"
-              className={`w-full px-4 py-3 rounded-xl border transition-colors focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              className={`w-full px-4 py-3  border transition-colors focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                 errors.heightCm
                   ? "border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600"
                   : "border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
@@ -255,7 +255,7 @@ export function UserProfileCard({
             <textarea
               rows={3}
               maxLength={200}
-              className={`w-full px-4 py-3 rounded-xl border transition-colors focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none ${
+              className={`w-full px-4 py-3  border transition-colors focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none ${
                 errors.fitnessGoal
                   ? "border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600"
                   : "border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
@@ -286,7 +286,7 @@ export function UserProfileCard({
               whileTap={{ scale: 0.98 }}
               type="submit"
             disabled={isUpdating}
-            className="w-full flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
             <Save className="w-5 h-5 mr-2" />
             {isUpdating ? "Saving..." : "Save Changes"}
