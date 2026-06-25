@@ -1,4 +1,4 @@
-import { useTheme } from "../providers/theme-provider";
+﻿import { useTheme } from "../providers/theme-provider";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -9,7 +9,7 @@ export function ThemeToggle() {
     <button
       aria-label={label}
       title={label}
-      className="w-full flex items-center justify-between px-3 py-2 rounded-md transition hover:bg-gray-100 dark:hover:bg-gray-800"
+      className="w-full flex items-center justify-between px-3 py-2  transition hover:bg-gray-100 dark:hover:bg-gray-800"
       onClick={() => setTheme(nextTheme as 'light' | 'dark')}
     >
       <span className="flex items-center gap-2">
