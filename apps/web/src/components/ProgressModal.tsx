@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { Line, Doughnut } from 'react-chartjs-2';
 import {
@@ -263,7 +263,7 @@ export default function ProgressModal({
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.25 }}
-        className="relative z-10 w-full max-w-lg bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-lg max-h-[90vh] overflow-y-auto outline-none"
+        className="relative z-10 w-full max-w-lg bg-white dark:bg-neutral-800  p-6 shadow-lg max-h-[90vh] overflow-y-auto outline-none"
         role="dialog"
         aria-modal="true"
         aria-label={`${title} details`}
@@ -275,7 +275,7 @@ export default function ProgressModal({
             <h3 className="text-lg font-semibold text-black dark:text-white">{title}</h3>
             <div className="text-sm text-muted-foreground">Detailed progress</div>
           </div>
-          <button onClick={onClose} className="text-muted-foreground hover:text-black dark:hover:text-white">✕</button>
+          <button onClick={onClose} className="text-muted-foreground hover:text-black dark:hover:text-white">âœ•</button>
         </div>
 
         {/* If exercise modal, show a header area with main GIF and quick stats */}
@@ -289,7 +289,7 @@ export default function ProgressModal({
                     <div className="text-sm text-muted-foreground">Exercises</div>
                     <div className="text-2xl font-bold">{logs.length} Workouts</div>
                   </div>
-                  <div className="w-28 h-28 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                  <div className="w-28 h-28  overflow-hidden bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
                     {selectedExerciseId ? (
                       <img src={logs.find(l => l.exercise?.id === selectedExerciseId)?.exercise?.imageUrl as string | undefined} alt="exercise gif" className="w-full h-full object-cover" />
                     ) : (
@@ -311,8 +311,8 @@ export default function ProgressModal({
                           setSelectedExerciseId(log.exercise?.id ?? null);
                         }
                       }}
-                      className={`rounded-lg overflow-hidden border ${selectedExerciseId === log.exercise?.id ? 'ring-2 ring-blue-400' : 'border-transparent'}`}
-                      title={`${log.exercise?.name} • ${(log as any).durationMinutes} mins`}
+                      className={` overflow-hidden border ${selectedExerciseId === log.exercise?.id ? 'ring-2 ring-blue-400' : 'border-transparent'}`}
+                      title={`${log.exercise?.name} â€¢ ${(log as any).durationMinutes} mins`}
                     >
                       <img src={log.exercise?.imageUrl} alt={log.exercise?.name} className="w-full h-20 object-cover" />
                     </button>
@@ -343,7 +343,7 @@ export default function ProgressModal({
                 <h4 className="font-medium">Exercise Categories</h4>
                 <div className="space-y-2">
                   {Object.entries(exerciseData.categories).map(([category, duration]) => (
-                    <div key={category} className={`flex items-center justify-between p-2 rounded-lg ${categoryColors[category]?.bg || 'bg-gray-100'}`}>
+                    <div key={category} className={`flex items-center justify-between p-2  ${categoryColors[category]?.bg || 'bg-gray-100'}`}>
                       <span className={`capitalize ${categoryColors[category]?.text || 'text-gray-700'}`}>{category}</span>
                       <span className="font-medium">{duration}min</span>
                     </div>
@@ -379,7 +379,7 @@ export default function ProgressModal({
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <h4 className="font-medium">Progress History</h4>
-              <select className="text-sm bg-transparent border-gray-200 dark:border-gray-700 rounded-md">
+              <select className="text-sm bg-transparent border-gray-200 dark:border-gray-700 ">
                 <option>Last 7 days</option>
                 <option>Last 30 days</option>
                 <option>Last 3 months</option>
@@ -397,17 +397,17 @@ export default function ProgressModal({
             return (
               <div className="space-y-6">
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg text-center">
+                  <div className="bg-gray-50 dark:bg-gray-900/50 p-4  text-center">
                     <div className="text-sm text-muted-foreground mb-1">Total Calories</div>
                     <div className="text-2xl font-bold">{totalCalories}</div>
                     <div className="text-sm text-muted-foreground">kcal burned</div>
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg text-center">
+                  <div className="bg-gray-50 dark:bg-gray-900/50 p-4  text-center">
                     <div className="text-sm text-muted-foreground mb-1">Avg. Duration</div>
                     <div className="text-2xl font-bold">{avgDuration}</div>
                     <div className="text-sm text-muted-foreground">mins/session</div>
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg text-center">
+                  <div className="bg-gray-50 dark:bg-gray-900/50 p-4  text-center">
                     <div className="text-sm text-muted-foreground mb-1">Intensity Split</div>
                     <div className="flex justify-center items-center gap-1 mt-2">
                       {(['low', 'medium', 'high'] as const).map(level => {
@@ -428,7 +428,7 @@ export default function ProgressModal({
                   <h4 className="font-medium">Recent Workouts</h4>
                   <div className="space-y-3">
                     {logs.slice(0, 3).map((log: any) => (
-                      <div key={log.id} className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                      <div key={log.id} className="bg-gray-50 dark:bg-gray-900/50 p-4 ">
                         <div className="flex justify-between items-start">
                           <div className="space-y-1">
                             <div className="font-medium">{log.exercise?.name || 'Unknown Exercise'}</div>
@@ -442,7 +442,7 @@ export default function ProgressModal({
                           <div className="text-right space-y-1">
                             <div className="flex items-center gap-2 justify-end">
                               <span className="font-medium">{log.durationMinutes} mins</span>
-                              <span className="text-sm text-muted-foreground">•</span>
+                              <span className="text-sm text-muted-foreground">â€¢</span>
                               <span className="font-medium">{log.caloriesBurned} kcal</span>
                             </div>
                             {log.notes && (
@@ -458,7 +458,7 @@ export default function ProgressModal({
             );
           })() : (
             <div className="grid grid-cols-3 gap-4 text-center">
-              <div className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-lg">
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-3 ">
                 <div className="text-sm text-muted-foreground">Average</div>
                 <div className="font-semibold mt-1">
                   {data
@@ -466,7 +466,7 @@ export default function ProgressModal({
                     : '-'}
                 </div>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-lg">
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-3 ">
                 <div className="text-sm text-muted-foreground">Best</div>
                 <div className="font-semibold mt-1">
                   {data
@@ -474,7 +474,7 @@ export default function ProgressModal({
                     : '-'}
                 </div>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-lg">
+              <div className="bg-gray-50 dark:bg-gray-900/50 p-3 ">
                 <div className="text-sm text-muted-foreground">Recent</div>
                 <div className="font-semibold mt-1">
                   {data
