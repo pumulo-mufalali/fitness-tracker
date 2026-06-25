@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../providers/auth-provider';
 import { useSettings } from '../providers/settings-provider';
@@ -37,10 +37,10 @@ const SettingsSection = ({ title, icon, children }: SettingsSectionProps) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20 dark:border-gray-700/50"
+    className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-xl border border-white/20 dark:border-gray-700/50"
   >
     <div className="flex items-center gap-3 mb-6">
-      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+      <div className="w-10 h-10  bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
         {icon}
       </div>
       <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -62,7 +62,7 @@ const SettingItem = ({
   children: React.ReactNode;
   warning?: boolean;
 }) => (
-  <div className={`p-4 rounded-xl border transition-all duration-200 ${
+  <div className={`p-4  border transition-all duration-200 ${
     warning 
       ? 'border-orange-200 dark:border-orange-800 bg-orange-50/50 dark:bg-orange-900/20' 
       : 'border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/20'
@@ -200,7 +200,7 @@ export default function SettingsPage() {
           className="mb-8"
         >
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+            <div className="w-12 h-12  bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
               <SettingsIcon className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -235,7 +235,7 @@ export default function SettingsPage() {
                   type="text"
                   value={currentUser?.name || ''}
                   onChange={(e) => updateProfileMutation.mutate({ name: e.target.value })}
-                  className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="px-3 py-2 border border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter your name"
                 />
               </SettingItem>
@@ -246,7 +246,7 @@ export default function SettingsPage() {
               >
                 <button
                   onClick={() => setShowPasswordChange(true)}
-                  className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200"
+                  className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white  transition-colors duration-200"
                 >
                   Change Password
                 </button>
@@ -259,7 +259,7 @@ export default function SettingsPage() {
               >
                 <button
                   onClick={() => setShowDeleteConfirm(true)}
-                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 flex items-center gap-2"
+                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white  transition-colors duration-200 flex items-center gap-2"
                 >
                   <Trash2 className="w-4 h-4" />
                   Delete Account
@@ -278,7 +278,7 @@ export default function SettingsPage() {
                 <select
                   value={settings.privacy}
                   onChange={(e) => settings.setPrivacy(e.target.value as 'private' | 'friends' | 'public')}
-                  className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="px-3 py-2 border border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="private">Private</option>
                   <option value="friends">Friends Only</option>
@@ -378,7 +378,7 @@ export default function SettingsPage() {
                 <select
                   value={settings.theme}
                   onChange={(e) => settings.setTheme(e.target.value as 'light' | 'dark' | 'system')}
-                  className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="px-3 py-2 border border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="light">Light</option>
                   <option value="dark">Dark</option>
@@ -393,7 +393,7 @@ export default function SettingsPage() {
                 <select
                   value={settings.units}
                   onChange={(e) => settings.setUnits(e.target.value as 'metric' | 'imperial')}
-                  className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="px-3 py-2 border border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="metric">Metric (kg, cm)</option>
                   <option value="imperial">Imperial (lbs, ft)</option>
@@ -407,11 +407,11 @@ export default function SettingsPage() {
                 <select
                   value={settings.language}
                   onChange={(e) => settings.setLanguage(e.target.value as 'en' | 'es' | 'fr' | 'de')}
-                  className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="px-3 py-2 border border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="en">English</option>
-                  <option value="es">Español</option>
-                  <option value="fr">Français</option>
+                  <option value="es">EspaÃ±ol</option>
+                  <option value="fr">FranÃ§ais</option>
                   <option value="de">Deutsch</option>
                 </select>
               </SettingItem>
@@ -427,7 +427,7 @@ export default function SettingsPage() {
               >
                 <button
                   onClick={exportData}
-                  className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors duration-200 flex items-center gap-2"
+                  className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white  transition-colors duration-200 flex items-center gap-2"
                 >
                   <Download className="w-4 h-4" />
                   Export Data
@@ -443,7 +443,7 @@ export default function SettingsPage() {
                     // In a real app, this would open a file picker
                     showWarning('Data import is not implemented yet.');
                   }}
-                  className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200 flex items-center gap-2"
+                  className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white  transition-colors duration-200 flex items-center gap-2"
                 >
                   <Upload className="w-4 h-4" />
                   Import Data
@@ -459,7 +459,7 @@ export default function SettingsPage() {
                   onClick={() => {
                     setShowClearDataConfirm(true);
                   }}
-                  className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors duration-200 flex items-center gap-2"
+                  className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white  transition-colors duration-200 flex items-center gap-2"
                 >
                   <Trash2 className="w-4 h-4" />
                   Clear Data
@@ -478,7 +478,7 @@ export default function SettingsPage() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl w-full max-w-md border border-white/20 dark:border-gray-700/50"
+            className="relative bg-white dark:bg-gray-800  p-8 shadow-2xl w-full max-w-md border border-white/20 dark:border-gray-700/50"
           >
             <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">Change Password</h3>
             
@@ -492,7 +492,7 @@ export default function SettingsPage() {
                     type={showPasswords ? "text" : "password"}
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10"
                   />
                   <button
                     type="button"
@@ -512,7 +512,7 @@ export default function SettingsPage() {
                   type={showPasswords ? "text" : "password"}
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
@@ -524,7 +524,7 @@ export default function SettingsPage() {
                   type={showPasswords ? "text" : "password"}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
             </div>
@@ -532,13 +532,13 @@ export default function SettingsPage() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowPasswordChange(false)}
-                className="flex-1 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200"
+                className="flex-1 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300  transition-colors duration-200"
               >
                 Cancel
               </button>
               <button
                 onClick={changePassword}
-                className="flex-1 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white  transition-colors duration-200 flex items-center justify-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 Save Changes
@@ -556,10 +556,10 @@ export default function SettingsPage() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl w-full max-w-md border border-white/20 dark:border-gray-700/50"
+            className="relative bg-white dark:bg-gray-800  p-8 shadow-2xl w-full max-w-md border border-white/20 dark:border-gray-700/50"
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-red-500 flex items-center justify-center">
+              <div className="w-12 h-12  bg-red-500 flex items-center justify-center">
                 <AlertTriangle className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-red-600 dark:text-red-400">Delete Account</h3>
@@ -570,14 +570,14 @@ export default function SettingsPage() {
                 Are you sure you want to delete your account? This action cannot be undone and will permanently remove:
               </p>
               <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1 ml-4">
-                <li>• All your workout logs and progress</li>
-                <li>• Your goals and achievements</li>
-                <li>• Your schedule and preferences</li>
-                <li>• Your profile information</li>
+                <li>â€¢ All your workout logs and progress</li>
+                <li>â€¢ Your goals and achievements</li>
+                <li>â€¢ Your schedule and preferences</li>
+                <li>â€¢ Your profile information</li>
               </ul>
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800  p-4">
                 <p className="text-sm text-red-700 dark:text-red-300 font-medium">
-                  ⚠️ This action is permanent and cannot be reversed.
+                  âš ï¸ This action is permanent and cannot be reversed.
                 </p>
               </div>
             </div>
@@ -585,13 +585,13 @@ export default function SettingsPage() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowDeleteConfirm(false)}
-                className="flex-1 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors duration-200"
+                className="flex-1 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300  transition-colors duration-200"
               >
                 Cancel
               </button>
               <button
                 onClick={deleteAccount}
-                className="flex-1 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-2 bg-red-500 hover:bg-red-600 text-white  transition-colors duration-200 flex items-center justify-center gap-2"
               >
                 <Trash2 className="w-4 h-4" />
                 Delete Account
