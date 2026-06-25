@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useToast } from '../providers/toast-provider';
 
 interface ScheduleItem {
@@ -68,7 +68,7 @@ export default function EditDayScheduleForm({ day, initialItems, onClose, onSave
 
   return (
     <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
-      <div className="bg-card rounded-xl p-6 shadow-lg w-full max-w-md">
+      <div className="bg-card  p-6 shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Edit Schedule for {day}</h2>
         <form onSubmit={handleSubmit}>
           <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-2">
@@ -88,7 +88,7 @@ export default function EditDayScheduleForm({ day, initialItems, onClose, onSave
                   onChange={e => handleItemChange(index, 'activity', e.target.value)}
                   className="w-2/3 p-2 rounded bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700"
                 />
-                <button type="button" onClick={() => handleRemoveItem(index)} className="text-red-500">✕</button>
+                <button type="button" onClick={() => handleRemoveItem(index)} className="text-red-500">âœ•</button>
               </div>
             ))}
           </div>
@@ -96,8 +96,8 @@ export default function EditDayScheduleForm({ day, initialItems, onClose, onSave
             + Add Item
           </button>
           <div className="mt-6 flex justify-end space-x-4">
-            <button type="button" onClick={onClose} className="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-700">Cancel</button>
-            <button type="submit" className="px-4 py-2 rounded-md bg-blue-600 text-white">Save Changes</button>
+            <button type="button" onClick={onClose} className="px-4 py-2  bg-gray-200 dark:bg-gray-700">Cancel</button>
+            <button type="submit" className="px-4 py-2  bg-blue-600 text-white">Save Changes</button>
           </div>
         </form>
       </div>
