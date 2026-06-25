@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { exerciseService } from '../lib/firebase-data-service';
 import type { Exercise } from '@myfitness/shared';
 
@@ -32,15 +32,15 @@ export default function GifViewer({ exerciseId, onBack }: { exerciseId?: string 
       <div className="flex items-center justify-between mb-6">
         <button
           onClick={onBack}
-          className="text-sm px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700"
+          className="text-sm px-3 py-2  bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700"
         >
-          ← Back
+          â† Back
         </button>
         <h1 className="text-2xl font-semibold">{exercise?.name ?? 'Exercise GIF'}</h1>
         <div />
       </div>
 
-      <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow">
+      <div className="bg-white dark:bg-gray-900 p-6  shadow">
         {isLoading ? (
           <div className="text-center text-muted-foreground py-8">Loading exercise...</div>
         ) : exercise?.imageUrl ? (
