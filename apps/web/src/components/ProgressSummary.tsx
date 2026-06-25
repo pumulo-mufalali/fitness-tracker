@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+﻿import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import type { WorkoutLog } from "../lib/firebase-data-service";
 
@@ -38,7 +38,7 @@ function ProgressSummaryComponent({ workouts, weightChange }: ProgressSummaryPro
       {/* Weekly Workouts */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white"
+        className="bg-gradient-to-br from-blue-500 to-indigo-600  p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Weekly Workouts</p>
@@ -53,7 +53,7 @@ function ProgressSummaryComponent({ workouts, weightChange }: ProgressSummaryPro
       {/* Total Time */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-6 text-white"
+        className="bg-gradient-to-br from-purple-500 to-pink-600  p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Total Time</p>
@@ -68,7 +68,7 @@ function ProgressSummaryComponent({ workouts, weightChange }: ProgressSummaryPro
       {/* Weight Change */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white"
+        className="bg-gradient-to-br from-green-500 to-emerald-600  p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Weight Change</p>
