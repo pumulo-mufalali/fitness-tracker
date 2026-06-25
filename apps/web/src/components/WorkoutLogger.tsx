@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import type { Exercise } from "@myfitness/shared";
 import type { WorkoutLog } from "../lib/firebase-data-service";
 import { useState } from "react";
@@ -32,7 +32,7 @@ export function WorkoutLogger({ exercises, onLogWorkout, isLogging }: WorkoutLog
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6"
+      className="bg-white dark:bg-gray-800  shadow-lg p-6"
     >
       <div className="flex items-center space-x-4 mb-6">
         <div className="bg-gradient-to-br from-purple-400 to-indigo-600 rounded-full p-3">
@@ -52,7 +52,7 @@ export function WorkoutLogger({ exercises, onLogWorkout, isLogging }: WorkoutLog
             Exercise
           </label>
           <select
-            className="block w-full rounded-lg border-gray-300 dark:border-gray-700 shadow-sm focus:border-purple-500 focus:ring-purple-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+            className="block w-full  border-gray-300 dark:border-gray-700 shadow-sm focus:border-purple-500 focus:ring-purple-500 dark:bg-gray-700 dark:text-white sm:text-sm"
             value={selectedExercise}
             onChange={(e) => setSelectedExercise(e.target.value)}
           >
@@ -71,7 +71,7 @@ export function WorkoutLogger({ exercises, onLogWorkout, isLogging }: WorkoutLog
           </label>
           <input
             type="number"
-            className="block w-full rounded-lg border-gray-300 dark:border-gray-700 shadow-sm focus:border-purple-500 focus:ring-purple-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+            className="block w-full  border-gray-300 dark:border-gray-700 shadow-sm focus:border-purple-500 focus:ring-purple-500 dark:bg-gray-700 dark:text-white sm:text-sm"
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
           />
@@ -82,7 +82,7 @@ export function WorkoutLogger({ exercises, onLogWorkout, isLogging }: WorkoutLog
             Notes
           </label>
           <textarea
-            className="block w-full rounded-lg border-gray-300 dark:border-gray-700 shadow-sm focus:border-purple-500 focus:ring-purple-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+            className="block w-full  border-gray-300 dark:border-gray-700 shadow-sm focus:border-purple-500 focus:ring-purple-500 dark:bg-gray-700 dark:text-white sm:text-sm"
             rows={3}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
@@ -93,7 +93,7 @@ export function WorkoutLogger({ exercises, onLogWorkout, isLogging }: WorkoutLog
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           type="submit"
-          className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50"
+          className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium  shadow-sm text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50"
           disabled={isLogging || !selectedExercise || !duration}
         >
           {isLogging ? "Logging..." : "Log Workout"}
