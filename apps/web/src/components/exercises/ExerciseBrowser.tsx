@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { exerciseCategories, type Exercise } from '../../lib/exercise-categories';
 import ExerciseGifModal from './ExerciseGifModal';
@@ -20,7 +20,7 @@ export default function ExerciseBrowser({ onOpenExercise }: ExerciseBrowserProps
 
   return (
     <>
-      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
+      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl  p-8 shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
         <div className="flex items-center justify-between mb-8 gap-6 flex-wrap">
           <div className="flex items-center gap-4">
             <div className="w-2 h-10 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></div>
@@ -33,7 +33,7 @@ export default function ExerciseBrowser({ onOpenExercise }: ExerciseBrowserProps
             id="category-select"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-6 py-3 rounded-2xl border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl font-semibold cursor-pointer"
+            className="px-6 py-3  border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl font-semibold cursor-pointer"
             aria-label="Select exercise category"
           >
             {exerciseCategories.map((category) => (
@@ -104,7 +104,7 @@ export default function ExerciseBrowser({ onOpenExercise }: ExerciseBrowserProps
                   whileHover={{ scale: 1.02, y: -4 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleExerciseClick(exercise)}
-                  className="group relative overflow-hidden rounded-3xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-500/50 dark:hover:border-blue-400/50 transition-all duration-300 aspect-square shadow-lg hover:shadow-2xl"
+                  className="group relative overflow-hidden  bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-500/50 dark:hover:border-blue-400/50 transition-all duration-300 aspect-square shadow-lg hover:shadow-2xl"
                   aria-label={`View ${exercise.name} exercise`}
                 >
                   <img
