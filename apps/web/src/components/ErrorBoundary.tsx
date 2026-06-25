@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+﻿import React, { Component, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
 
 interface Props {
@@ -62,7 +62,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
       return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-8 max-w-md w-full">
+          <div className="bg-white dark:bg-gray-800  shadow-xl border border-gray-200 dark:border-gray-700 p-8 max-w-md w-full">
             <div className="flex items-center justify-center mb-6">
               <div className="bg-red-100 dark:bg-red-900/20 p-4 rounded-full">
                 <AlertTriangle className="w-12 h-12 text-red-600 dark:text-red-400" />
@@ -78,7 +78,7 @@ export class ErrorBoundary extends Component<Props, State> {
             </p>
 
             {this.state.error && process.env.NODE_ENV === 'development' && (
-              <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 mb-6 overflow-auto max-h-40">
+              <div className="bg-gray-100 dark:bg-gray-700  p-4 mb-6 overflow-auto max-h-40">
                 <p className="text-xs font-mono text-red-600 dark:text-red-400 break-all">
                   {this.state.error.toString()}
                 </p>
@@ -88,14 +88,14 @@ export class ErrorBoundary extends Component<Props, State> {
             <div className="flex gap-4">
               <button
                 onClick={this.handleReset}
-                className="flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
               >
                 <RefreshCw className="w-4 h-4" />
                 Try Again
               </button>
               <button
                 onClick={() => window.location.reload()}
-                className="flex-1 px-4 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-xl transition-all duration-200"
+                className="flex-1 px-4 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium  transition-all duration-200"
               >
                 Reload Page
               </button>
