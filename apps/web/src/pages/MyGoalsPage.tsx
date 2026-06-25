@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../providers/auth-provider';
 import { getUserGoals, createGoal, updateGoal, deleteGoal } from '../lib/firebase-goal-service';
@@ -155,7 +155,7 @@ export default function MyGoalsPage({ onBack }: { onBack?: () => void }) {
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">My weight goals</h1>
         <button 
-          className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5" 
+          className="px-6 py-3  bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5" 
           onClick={handleAddGoal}
         >
           + Add Goal
@@ -172,14 +172,14 @@ export default function MyGoalsPage({ onBack }: { onBack?: () => void }) {
             const progress = Math.min(100, Math.round((goal.current / goal.target) * 100));
             const daysLeft = Math.ceil((new Date(goal.deadline).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
             return (
-              <div key={goal.id} className="p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 dark:border-gray-700/50 space-y-4 hover:shadow-2xl transition-all duration-300">
+              <div key={goal.id} className="p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  shadow-xl border border-white/20 dark:border-gray-700/50 space-y-4 hover:shadow-2xl transition-all duration-300">
                 <div className="flex justify-between items-center">
                   <div>
                     <h2 className="font-bold text-xl text-gray-900 dark:text-white">{goal.title}</h2>
                   </div>
                   <div className="flex gap-2">
                     <button 
-                      className="p-2 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-300 transition-all duration-200" 
+                      className="p-2  bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-300 transition-all duration-200" 
                       title="Edit Goal" 
                       onClick={() => handleEditGoal(goal)}
                     >
@@ -188,7 +188,7 @@ export default function MyGoalsPage({ onBack }: { onBack?: () => void }) {
                       </svg>
                     </button>
                     <button 
-                      className="p-2 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-300 transition-all duration-200" 
+                      className="p-2  bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-300 transition-all duration-200" 
                       title="Delete Goal" 
                       onClick={() => handleDelete(goal.id)}
                     >
@@ -221,20 +221,20 @@ export default function MyGoalsPage({ onBack }: { onBack?: () => void }) {
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-start justify-center pt-8 px-4 pb-4">
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={handleCloseModal} />
-          <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-2xl w-full max-w-md max-h-[calc(100vh-4rem)] overflow-y-auto border border-white/20 dark:border-gray-700/50 mt-4">
+          <div className="relative bg-white dark:bg-gray-800  p-6 shadow-2xl w-full max-w-md max-h-[calc(100vh-4rem)] overflow-y-auto border border-white/20 dark:border-gray-700/50 mt-4">
             <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               {editGoal ? 'Edit Goal' : 'Add Goal'}
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <input
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                className="w-full px-4 py-3  border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                 placeholder="Goal Title"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 required
               />
               <input
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                className="w-full px-4 py-3  border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                 placeholder="Target"
                 type="number"
                 value={formData.target || ''}
@@ -242,7 +242,7 @@ export default function MyGoalsPage({ onBack }: { onBack?: () => void }) {
                 required
               />
               <input
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                className="w-full px-4 py-3  border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                 placeholder="Current"
                 type="number"
                 value={formData.current || ''}
@@ -250,14 +250,14 @@ export default function MyGoalsPage({ onBack }: { onBack?: () => void }) {
                 required
               />
               <input
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                className="w-full px-4 py-3  border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                 placeholder="Unit"
                 value={formData.unit}
                 onChange={(e) => setFormData({ ...formData, unit: e.target.value })}
                 required
               />
               <input
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                className="w-full px-4 py-3  border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                 placeholder="Deadline"
                 type="date"
                 value={formData.deadline}
@@ -265,8 +265,8 @@ export default function MyGoalsPage({ onBack }: { onBack?: () => void }) {
                 required
               />
               <div className="flex justify-end gap-3 pt-4">
-                <button type="button" className="px-6 py-3 rounded-xl bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" onClick={handleCloseModal}>Cancel</button>
-                <button type="submit" className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-xl" disabled={createGoalMutation.isPending || updateGoalMutation.isPending}>
+                <button type="button" className="px-6 py-3  bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" onClick={handleCloseModal}>Cancel</button>
+                <button type="submit" className="px-6 py-3  bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-xl" disabled={createGoalMutation.isPending || updateGoalMutation.isPending}>
                   {createGoalMutation.isPending || updateGoalMutation.isPending ? 'Saving...' : 'Save'}
                 </button>
               </div>
