@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import LoginForm from '../components/LoginForm';
 import SignUpForm from '../components/SignUpForm';
@@ -48,7 +48,7 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-4 mb-6">
-            <h1 className="text-5xl font-black bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 dark:from-white dark:via-blue-100 dark:to-indigo-100 bg-clip-text text-transparent">
+            <h1 className="text-5xl font-black text-gray-900 dark:text-white">
               FITNESS TRACKER
             </h1>
           </div>
@@ -91,19 +91,19 @@ export default function AuthPage({ onAuthSuccess }: AuthPageProps) {
           </p>
           <div className="flex justify-center space-x-8 text-sm text-gray-500 dark:text-gray-400">
             <div className="flex items-center gap-2">
-              <span className="text-lg">📊</span>
+              <span className="text-lg">ðŸ“Š</span>
               <span>Analytics</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-lg">🏋️</span>
+              <span className="text-lg">ðŸ‹ï¸</span>
               <span>Workouts</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-lg">📈</span>
+              <span className="text-lg">ðŸ“ˆ</span>
               <span>Progress</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-lg">🎯</span>
+              <span className="text-lg">ðŸŽ¯</span>
               <span>Goals</span>
             </div>
           </div>
