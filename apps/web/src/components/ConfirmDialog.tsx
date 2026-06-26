@@ -76,7 +76,7 @@ export function ConfirmDialog({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onCancel}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/50 z-50"
           />
 
           {/* Dialog */}
@@ -85,7 +85,7 @@ export function ConfirmDialog({
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white dark:bg-gray-800  shadow-2xl p-6 max-w-md w-full pointer-events-auto border border-gray-200 dark:border-gray-700"
+              className="bg-white dark:bg-gray-800  shadow-md p-6 max-w-md w-full pointer-events-auto border border-gray-200 dark:border-gray-700"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start space-x-4">
