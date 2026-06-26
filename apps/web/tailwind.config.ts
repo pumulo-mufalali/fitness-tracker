@@ -5,11 +5,14 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter Variable', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
         background: "rgb(var(--background))",
         foreground: "rgb(var(--foreground))",
         primary: {
-          DEFAULT: "#6366f1",
+          DEFAULT: "#2563eb",
           foreground: "#ffffff",
         },
       },
@@ -17,4 +20,3 @@ export default {
   },
   plugins: []
 } satisfies Config;
-
