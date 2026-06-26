@@ -160,7 +160,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onBack}
-                className="p-3  bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200/50 dark:border-gray-700/50"
+                className="p-3  bg-white/80 dark:bg-gray-800/80 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-sm border border-gray-200 dark:border-gray-700"
               >
                 <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -168,7 +168,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
               </motion.button>
             )}
             <div className="flex-1">
-              <h1 className="text-5xl font-black bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 dark:from-white dark:via-blue-100 dark:to-indigo-100 bg-clip-text text-transparent">
+              <h1 className="text-5xl font-black text-gray-900 dark:text-white">
                 Exercise Library
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-400 mt-2 font-medium">
@@ -194,7 +194,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
                 onChange={handleSearchChange}
                 placeholder="Search exercises by name or category..."
                 maxLength={MAX_SEARCH_LENGTH}
-                className="w-full pl-12 pr-12 py-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50  text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="w-full pl-12 pr-12 py-4 bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700  text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-lg hover:shadow-sm"
               />
               {searchQuery && (
                 <button
@@ -250,7 +250,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
             >
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100 flex items-center gap-3">
-                <div className="w-2 h-8 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></div>
+                <div className="w-2 h-8 bg-blue-600 rounded-full"></div>
                 {category.category}
               </h2>
               <div className="grid grid-cols-4 gap-8">
@@ -274,7 +274,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
                         });
                       }
                     }}
-                    className="group relative overflow-hidden  bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-500/50 dark:hover:border-blue-400/50 transition-all duration-300 aspect-square shadow-lg hover:shadow-2xl"
+                    className="group relative overflow-hidden  bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-500/50 dark:hover:border-blue-400/50 transition-all duration-300 aspect-square shadow-lg hover:shadow-md"
                   >
                     <img
                       src={exercise.imageUrl}
@@ -293,7 +293,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <span className="text-white font-bold text-lg block group-hover:text-white transition-colors duration-300">{exercise.name}</span>
                     </div>
-                    <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m-6-8h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z" />
                       </svg>
@@ -311,7 +311,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-16"
           >
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl  p-12 border border-gray-200/50 dark:border-gray-700/50 shadow-lg">
+            <div className="bg-white/80 dark:bg-gray-800/80  p-12 border border-gray-200 dark:border-gray-700 shadow-lg">
               <div className="w-24 h-24 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="w-12 h-12 text-gray-400 dark:text-gray-500" />
               </div>
@@ -323,7 +323,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
               </p>
               <button
                 onClick={clearSearch}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="px-6 py-3 bg-blue-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-sm"
               >
                 Clear Search & Show All
               </button>
