@@ -121,7 +121,7 @@ export function WeightChart({ weightHistory, currentWeight, onAddWeight, isAddin
     >
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-4">
-          <div className="bg-gradient-to-br from-green-400 to-emerald-600 rounded-full p-3">
+          <div className="bg-emerald-600 rounded-full p-3">
             <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
             </svg>
@@ -147,7 +147,7 @@ export function WeightChart({ weightHistory, currentWeight, onAddWeight, isAddin
         <input
           type="number"
           step="0.1"
-          className="flex-1  border-gray-300 dark:border-gray-700 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+          className="flex-1  border-gray-300 dark:border-gray-700 shadow-sm focus:border-green-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white sm:text-sm"
           placeholder="Enter weight in kg"
           value={newWeight}
           onChange={(e) => setNewWeight(e.target.value)}
@@ -156,7 +156,7 @@ export function WeightChart({ weightHistory, currentWeight, onAddWeight, isAddin
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           type="submit"
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium  shadow-sm text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50"
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium  shadow-sm text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
           disabled={isAdding || !newWeight}
         >
           {isAdding ? "Adding..." : "Add Entry"}
