@@ -150,7 +150,7 @@ export default function DetailedStatsModal({
           <div className="lg:col-span-1 space-y-4">
             {/* Weight Update Section */}
             {onUpdateWeight && (
-              <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20  border border-green-200 dark:border-green-800">
+              <div className="p-4 bg-gray-50 dark:bg-gray-800  border border-green-200 dark:border-green-800">
                 <h4 className="text-lg font-semibold text-green-800 dark:text-green-200 mb-3">Update Weight</h4>
                 <div className="mb-2">
                   <span className="text-sm text-green-700 dark:text-green-300">Current Weight: </span>
@@ -162,7 +162,7 @@ export default function DetailedStatsModal({
                       type="number"
                       step="0.1"
                       min="0"
-                      className="w-full px-3 py-2 border border-green-300 dark:border-green-600  bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                      className="w-full px-3 py-2 border border-green-300 dark:border-green-600  bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-green-500"
                       placeholder="Enter new weight (kg)"
                       value={newWeight}
                       onChange={(e) => setNewWeight(e.target.value)}
@@ -174,7 +174,7 @@ export default function DetailedStatsModal({
                     disabled={isUpdating || !newWeight}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold  transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold  transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isUpdating ? "Updating..." : isSuccess ? "âœ“ Updated!" : "Update Weight"}
                   </motion.button>
