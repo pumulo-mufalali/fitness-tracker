@@ -61,7 +61,7 @@ export default function SchedulePage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">My Workout Schedule</h1>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">My Workout Schedule</h1>
       </div>
 
       {/* Schedule Grid */}
@@ -78,12 +78,12 @@ export default function SchedulePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-xl border border-white/20 dark:border-gray-700/50 cursor-pointer hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+              className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700 cursor-pointer hover:shadow-md transform hover:-translate-y-1 transition-all duration-300"
               onClick={() => setEditingDay(day)}
             >
               <div className="text-center mb-6">
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{day}</h2>
-                <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto"></div>
+                <div className="w-12 h-1 bg-blue-600 rounded-full mx-auto"></div>
               </div>
               
               <div className="space-y-3 max-h-[400px] overflow-y-auto">
@@ -98,7 +98,7 @@ export default function SchedulePage() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: itemIndex * 0.1 }}
-                      className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-600/50 p-3  border border-gray-200/50 dark:border-gray-600/50 hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 transition-all duration-200"
+                      className="bg-gray-50 dark:bg-gray-800 p-3  border border-gray-200/50 dark:border-gray-600/50 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200"
                     >
                       <div className="flex flex-col gap-2">
                         <div className="flex items-center gap-2">
