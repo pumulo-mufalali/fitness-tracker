@@ -127,7 +127,7 @@ export default function WorkoutLogsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
             Workout Logs
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -141,7 +141,7 @@ export default function WorkoutLogsPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 p-4  border border-blue-200/50 dark:border-blue-700/50"
+          className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center gap-2 mb-2">
             <Activity className="w-5 h-5 text-blue-600 dark:text-blue-400" />
@@ -154,7 +154,7 @@ export default function WorkoutLogsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 p-4  border border-purple-200/50 dark:border-purple-700/50"
+          className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center gap-2 mb-2">
             <Clock className="w-5 h-5 text-purple-600 dark:text-purple-400" />
@@ -167,7 +167,7 @@ export default function WorkoutLogsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 p-4  border border-orange-200/50 dark:border-orange-700/50"
+          className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center gap-2 mb-2">
             <Flame className="w-5 h-5 text-orange-600 dark:text-orange-400" />
@@ -180,7 +180,7 @@ export default function WorkoutLogsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 p-4  border border-green-200/50 dark:border-green-700/50"
+          className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center gap-2 mb-2">
             <Activity className="w-5 h-5 text-green-600 dark:text-green-400" />
@@ -199,7 +199,7 @@ export default function WorkoutLogsPage() {
               placeholder="Search workouts by exercise name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-2 pl-10  border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300"
+              className="w-full px-4 py-2 pl-10  border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300"
             />
             <svg className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -211,7 +211,7 @@ export default function WorkoutLogsPage() {
           <select
             value={filterIntensity}
             onChange={(e) => setFilterIntensity(e.target.value as 'all' | 'low' | 'medium' | 'high')}
-            className="px-4 py-2  border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300"
+            className="px-4 py-2  border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300"
           >
             <option value="all">All Intensities</option>
             <option value="low">Low Intensity</option>
@@ -252,7 +252,7 @@ export default function WorkoutLogsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-200"
+                className="bg-white dark:bg-gray-800  p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-sm transition-all duration-200"
               >
                 <div className="flex items-start gap-4">
                   {/* Exercise Image */}
