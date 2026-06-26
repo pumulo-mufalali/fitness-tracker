@@ -69,7 +69,7 @@ function ToastItem({ toast, onClose }: ToastProps) {
       initial={{ opacity: 0, y: -20, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
-      className={`${color.bg} ${color.border} border  shadow-lg backdrop-blur-sm p-4 min-w-[300px] max-w-md`}
+      className={`${color.bg} ${color.border} border  shadow-lg p-4 min-w-[300px] max-w-md`}
     >
       <div className="flex items-start space-x-3">
         <Icon className={`${color.icon} w-5 h-5 mt-0.5 flex-shrink-0`} />
