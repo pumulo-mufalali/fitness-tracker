@@ -38,7 +38,7 @@ function ProgressSummaryComponent({ workouts, weightChange }: ProgressSummaryPro
       {/* Weekly Workouts */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-gradient-to-br from-blue-500 to-indigo-600  p-6 text-white"
+        className="bg-blue-600  p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Weekly Workouts</p>
@@ -53,31 +53,31 @@ function ProgressSummaryComponent({ workouts, weightChange }: ProgressSummaryPro
       {/* Total Time */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-gradient-to-br from-purple-500 to-pink-600  p-6 text-white"
+        className="bg-slate-700 dark:bg-slate-600  p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Total Time</p>
-          <svg className="h-8 w-8 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="h-8 w-8 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
         <p className="mt-2 text-3xl font-bold">{totalDuration}m</p>
-        <p className="text-purple-200">This Week</p>
+        <p className="text-slate-300">This Week</p>
       </motion.div>
 
       {/* Weight Change */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-gradient-to-br from-green-500 to-emerald-600  p-6 text-white"
+        className="bg-emerald-600  p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Weight Change</p>
-          <svg className="h-8 w-8 text-green-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="h-8 w-8 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
           </svg>
         </div>
         <p className="mt-2 text-3xl font-bold">{weightChange > 0 ? "+" : ""}{weightChange.toFixed(1)}kg</p>
-        <p className="text-green-200">Last 7 Days</p>
+        <p className="text-emerald-100">Last 7 Days</p>
       </motion.div>
     </motion.div>
   );
