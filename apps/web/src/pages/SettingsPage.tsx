@@ -37,13 +37,13 @@ const SettingsSection = ({ title, icon, children }: SettingsSectionProps) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-xl border border-white/20 dark:border-gray-700/50"
+    className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700"
   >
     <div className="flex items-center gap-3 mb-6">
-      <div className="w-10 h-10  bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+      <div className="w-10 h-10  bg-blue-600 flex items-center justify-center">
         {icon}
       </div>
-      <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
         {title}
       </h2>
     </div>
@@ -200,11 +200,11 @@ export default function SettingsPage() {
           className="mb-8"
         >
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12  bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+            <div className="w-12 h-12  bg-blue-600 flex items-center justify-center">
               <SettingsIcon className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-black bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 dark:from-white dark:via-blue-100 dark:to-indigo-100 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-black text-gray-900 dark:text-white">
                 Settings
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-400 mt-2 font-medium">
@@ -473,12 +473,12 @@ export default function SettingsPage() {
       {/* Password Change Modal */}
       {showPasswordChange && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setShowPasswordChange(false)} />
+          <div className="absolute inset-0 bg-black/50" onClick={() => setShowPasswordChange(false)} />
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="relative bg-white dark:bg-gray-800  p-8 shadow-2xl w-full max-w-md border border-white/20 dark:border-gray-700/50"
+            className="relative bg-white dark:bg-gray-800  p-8 shadow-md w-full max-w-md border border-gray-200 dark:border-gray-700"
           >
             <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">Change Password</h3>
             
@@ -551,12 +551,12 @@ export default function SettingsPage() {
       {/* Delete Account Confirmation Modal */}
       {showDeleteConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setShowDeleteConfirm(false)} />
+          <div className="absolute inset-0 bg-black/50" onClick={() => setShowDeleteConfirm(false)} />
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="relative bg-white dark:bg-gray-800  p-8 shadow-2xl w-full max-w-md border border-white/20 dark:border-gray-700/50"
+            className="relative bg-white dark:bg-gray-800  p-8 shadow-md w-full max-w-md border border-gray-200 dark:border-gray-700"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12  bg-red-500 flex items-center justify-center">
