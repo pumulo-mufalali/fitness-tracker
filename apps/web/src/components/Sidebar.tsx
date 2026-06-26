@@ -27,7 +27,7 @@ const NavItem = ({ children, active, onClick, icon }: NavItemProps) => (
     <button
       className={`w-full text-left px-4 py-3.5  transition-all duration-300 font-medium flex items-center space-x-3 group ${
         active 
-          ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' 
+          ? 'bg-blue-600 text-white shadow-lg ' 
           : 'hover:bg-gray-50 dark:hover:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:shadow-md hover:text-blue-600 dark:hover:text-blue-400'
       }`}
       onClick={(e) => {
@@ -96,10 +96,10 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           onClick={() => onNav?.('profile')} 
-          className="w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl  p-6 shadow-xl hover:shadow-2xl transition-all duration-300 relative group border border-gray-200/50 dark:border-gray-700/50"
+          className="w-full bg-white dark:bg-gray-900  p-6 shadow-sm hover:shadow-md transition-all duration-300 relative group border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center space-x-4 mb-6">
-            <div className="w-16 h-16  bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+            <div className="w-16 h-16  bg-blue-600 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
               {profile?.name?.charAt(0) ?? 'U'}
             </div>
             <div>
@@ -109,15 +109,15 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30  p-4 text-center border border-blue-200/50 dark:border-blue-700/50">
-              <div className="text-xs text-blue-600 dark:text-blue-400 font-semibold uppercase tracking-wide">Height</div>
-              <div className="font-bold text-blue-700 dark:text-blue-300 mt-1">
+            <div className="bg-gray-50 dark:bg-gray-800  p-4 text-center border border-gray-200 dark:border-gray-700">
+              <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide">Height</div>
+              <div className="font-bold text-gray-900 dark:text-white mt-1">
                 {profile?.heightCm && profile.heightCm > 0 ? formatHeight(profile.heightCm, settings.units) : 'Not set'}
               </div>
             </div>
-            <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30  p-4 text-center border border-green-200/50 dark:border-green-700/50">
-              <div className="text-xs text-green-600 dark:text-green-400 font-semibold uppercase tracking-wide">Weight</div>
-              <div className="font-bold text-green-700 dark:text-green-300 mt-1">
+            <div className="bg-gray-50 dark:bg-gray-800  p-4 text-center border border-gray-200 dark:border-gray-700">
+              <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide">Weight</div>
+              <div className="font-bold text-gray-900 dark:text-white mt-1">
                 {profile?.weightKg && profile.weightKg > 0 ? formatWeight(profile.weightKg, settings.units) : 'Not set'}
               </div>
             </div>
@@ -125,10 +125,10 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
 
           {/* BMI Display */}
           {bmi && bmiCategory && (
-            <div className="mt-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30  p-4 border border-purple-200/50 dark:border-purple-700/50">
-              <div className="text-xs text-purple-600 dark:text-purple-400 font-semibold uppercase tracking-wide text-center">BMI</div>
+            <div className="mt-4 bg-gray-50 dark:bg-gray-800  p-4 border border-gray-200 dark:border-gray-700">
+              <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide text-center">BMI</div>
               <div className="flex items-center justify-between mt-2">
-                <div className="font-bold text-purple-700 dark:text-purple-300 text-lg">{bmi}</div>
+                <div className="font-bold text-gray-900 dark:text-white text-lg">{bmi}</div>
                 <div className={`text-xs font-semibold ${bmiCategory.color}`}>{bmiCategory.category}</div>
               </div>
             </div>
@@ -136,9 +136,9 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
 
           {/* Fitness Goal Display */}
           {profile?.fitnessGoal && (
-            <div className="mt-4 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30  p-4 border border-orange-200/50 dark:border-orange-700/50">
-              <div className="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide">Fitness Goal</div>
-              <div className="text-sm text-orange-700 dark:text-orange-300 mt-2 line-clamp-2">{profile.fitnessGoal}</div>
+            <div className="mt-4 bg-gray-50 dark:bg-gray-800  p-4 border border-gray-200 dark:border-gray-700">
+              <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide">Fitness Goal</div>
+              <div className="text-sm text-gray-700 dark:text-gray-300 mt-2 line-clamp-2">{profile.fitnessGoal}</div>
             </div>
           )}
 
@@ -150,7 +150,7 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl  p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50"
+          className="bg-white dark:bg-gray-900  p-6 shadow-sm border border-gray-200 dark:border-gray-700"
           role="navigation"
           aria-label="Primary"
         >
@@ -226,10 +226,10 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-emerald-900/20 dark:via-teal-900/20 dark:to-cyan-900/20  p-6 shadow-xl border border-emerald-200/50 dark:border-emerald-700/50"
+          className="bg-white dark:bg-gray-900  p-6 shadow-sm border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600  flex items-center justify-center">
+            <div className="w-10 h-10 bg-blue-600  flex items-center justify-center">
               <Activity className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -240,7 +240,7 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
 
           {latestWorkout ? (
             <div className="space-y-3">
-              <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm  p-4 border border-emerald-200/30 dark:border-emerald-700/30">
+              <div className="bg-white dark:bg-gray-800  p-4 border border-gray-200 dark:border-gray-700">
                 <div className="font-semibold text-gray-900 dark:text-white mb-2">
                   {getExerciseName(latestWorkout.exerciseId)}
                 </div>
@@ -269,7 +269,7 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
                   sessionStorage.setItem('sidebar_nav', 'true');
                   onNav?.('workouts');
                 }}
-                className="w-full px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-xl text-sm"
+                className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-sm text-sm"
               >
                 View All Workouts
               </button>
@@ -285,7 +285,7 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
                   e.preventDefault();
                   onNav?.('dashboard');
                 }}
-                className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-xl text-sm"
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-sm text-sm"
               >
                 Start Your First Workout
               </button>
