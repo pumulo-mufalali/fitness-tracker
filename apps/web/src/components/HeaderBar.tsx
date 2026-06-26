@@ -11,7 +11,7 @@ export default function HeaderBar({ title, weekLine, onNav }: { title: string; w
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-5xl font-black tracking-tight bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 dark:from-white dark:via-blue-100 dark:to-indigo-100 bg-clip-text text-transparent"
+              className="text-5xl font-black tracking-tight text-gray-900 dark:text-white"
             >
               {title}
             </motion.h1>
@@ -34,16 +34,13 @@ export default function HeaderBar({ title, weekLine, onNav }: { title: string; w
                 initial={{ opacity: 0, scale: 0.9, y: -5 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.4, ease: "easeOut" }}
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px -12px rgba(99, 102, 241, 0.5)",
-                }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={(e) => {
                   e.preventDefault();
                   onNav?.('exercises');
                 }}
-                className="group relative px-7 py-4  bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 text-white font-bold text-base tracking-wide transition-all duration-300 shadow-2xl hover:shadow-indigo-500/50 border border-white/20 overflow-hidden"
+                className="group relative px-7 py-4  bg-blue-600 hover:bg-blue-700 text-white font-bold text-base tracking-wide transition-all duration-300 shadow-md  border border-white/10 overflow-hidden"
               >
                 {/* Shine effect */}
                 <motion.div
