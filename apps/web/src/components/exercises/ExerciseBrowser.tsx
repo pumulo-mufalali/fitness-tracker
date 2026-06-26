@@ -20,10 +20,10 @@ export default function ExerciseBrowser({ onOpenExercise }: ExerciseBrowserProps
 
   return (
     <>
-      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl  p-8 shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
+      <div className="bg-white dark:bg-gray-900  p-8 shadow-md border border-gray-200 dark:border-gray-700">
         <div className="flex items-center justify-between mb-8 gap-6 flex-wrap">
           <div className="flex items-center gap-4">
-            <div className="w-2 h-10 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></div>
+            <div className="w-2 h-10 bg-blue-600 rounded-full"></div>
             <h2 className="text-4xl font-black text-gray-900 dark:text-gray-100">
               Browse Exercises
             </h2>
@@ -33,7 +33,7 @@ export default function ExerciseBrowser({ onOpenExercise }: ExerciseBrowserProps
             id="category-select"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-6 py-3  border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl font-semibold cursor-pointer"
+            className="px-6 py-3  border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300 shadow-lg hover:shadow-sm font-semibold cursor-pointer"
             aria-label="Select exercise category"
           >
             {exerciseCategories.map((category) => (
@@ -104,7 +104,7 @@ export default function ExerciseBrowser({ onOpenExercise }: ExerciseBrowserProps
                   whileHover={{ scale: 1.02, y: -4 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleExerciseClick(exercise)}
-                  className="group relative overflow-hidden  bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 hover:border-blue-500/50 dark:hover:border-blue-400/50 transition-all duration-300 aspect-square shadow-lg hover:shadow-2xl"
+                  className="group relative overflow-hidden  bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-500/50 dark:hover:border-blue-400/50 transition-all duration-300 aspect-square shadow-lg hover:shadow-md"
                   aria-label={`View ${exercise.name} exercise`}
                 >
                   <img
@@ -117,7 +117,7 @@ export default function ExerciseBrowser({ onOpenExercise }: ExerciseBrowserProps
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <span className="text-white font-bold text-lg block group-hover:text-white transition-colors duration-300">{exercise.name}</span>
                   </div>
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m-6-8h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z" />
                     </svg>
