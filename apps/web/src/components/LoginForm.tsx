@@ -218,7 +218,7 @@ export default function LoginForm({ onSuccess, onSwitchToSignUp, isLoading: exte
       transition={{ duration: 0.5 }}
       className="w-full max-w-lg mx-auto"
     >
-      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl  shadow-2xl p-10 border border-gray-200/50 dark:border-gray-700/50">
+      <div className="bg-white dark:bg-gray-900  shadow-md p-10 border border-gray-200 dark:border-gray-700">
         {/* Header */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-black text-gray-900 dark:text-white mb-3">
@@ -248,7 +248,7 @@ export default function LoginForm({ onSuccess, onSwitchToSignUp, isLoading: exte
                 className={`block w-full pl-12 pr-4 py-4 border-2  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 font-medium ${
                   errors.email 
                     ? 'border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600' 
-                    : 'border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500'
+                    : 'border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500'
                 }`}
                 placeholder="Enter your email"
               />
@@ -275,7 +275,7 @@ export default function LoginForm({ onSuccess, onSwitchToSignUp, isLoading: exte
                 className={`block w-full pl-12 pr-14 py-4 border-2  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 font-medium ${
                   errors.password 
                     ? 'border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600' 
-                    : 'border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500'
+                    : 'border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500'
                 }`}
                 placeholder="Enter your password"
               />
@@ -331,7 +331,7 @@ export default function LoginForm({ onSuccess, onSwitchToSignUp, isLoading: exte
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isFormLoading}
-            className="w-full flex justify-center py-4 px-6 border border-transparent  shadow-xl text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+            className="w-full flex justify-center py-4 px-6 border border-transparent  shadow-sm text-lg font-bold text-white bg-blue-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
           >
             {isFormLoading ? (
               <div className="flex items-center">
@@ -368,7 +368,7 @@ export default function LoginForm({ onSuccess, onSwitchToSignUp, isLoading: exte
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closePasswordResetModal}
-              className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-black/60 dark:bg-black/80 z-50"
             />
             
             {/* Modal */}
@@ -379,7 +379,7 @@ export default function LoginForm({ onSuccess, onSwitchToSignUp, isLoading: exte
               className="fixed inset-0 z-50 flex items-center justify-center p-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl  shadow-2xl border border-gray-200/50 dark:border-gray-700/50 w-full max-w-md p-8 relative">
+              <div className="bg-white/95 dark:bg-gray-900/95  shadow-md border border-gray-200 dark:border-gray-700 w-full max-w-md p-8 relative">
                 {/* Close Button */}
                 <button
                   onClick={closePasswordResetModal}
@@ -422,7 +422,7 @@ export default function LoginForm({ onSuccess, onSwitchToSignUp, isLoading: exte
                     </div>
                     <button
                       onClick={closePasswordResetModal}
-                      className="w-full py-3 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold  transition-all duration-300 shadow-lg hover:shadow-xl"
+                      className="w-full py-3 px-6 bg-blue-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold  transition-all duration-300 shadow-lg hover:shadow-sm"
                     >
                       Got it
                     </button>
@@ -463,7 +463,7 @@ export default function LoginForm({ onSuccess, onSwitchToSignUp, isLoading: exte
                             className={`block w-full pl-12 pr-4 py-4 border-2  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 font-medium ${
                               resetError
                                 ? 'border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-600'
-                                : 'border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500'
+                                : 'border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500'
                             }`}
                             placeholder="Enter your email"
                             disabled={isSendingReset}
@@ -489,7 +489,7 @@ export default function LoginForm({ onSuccess, onSwitchToSignUp, isLoading: exte
                         whileTap={{ scale: 0.98 }}
                         type="submit"
                         disabled={isSendingReset}
-                        className="w-full flex justify-center py-4 px-6 border border-transparent  shadow-xl text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                        className="w-full flex justify-center py-4 px-6 border border-transparent  shadow-sm text-lg font-bold text-white bg-blue-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                       >
                         {isSendingReset ? (
                           <div className="flex items-center">
