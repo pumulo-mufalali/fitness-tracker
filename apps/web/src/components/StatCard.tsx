@@ -11,7 +11,7 @@ export interface StatCardProps {
   onOpen?: () => void;
 }
 
-function StatCardComponent({ title, main, sub, progress, gradientClass = 'from-cyan-400 to-blue-500', icon, onOpen }: StatCardProps) {
+function StatCardComponent({ title, main, sub, progress, gradientClass = 'bg-blue-600', icon, onOpen }: StatCardProps) {
   const progressPct = useMemo(() => 
     progress ? Math.round((progress.value / Math.max(1, progress.total)) * 100) : 0,
     [progress]
@@ -38,10 +38,10 @@ function StatCardComponent({ title, main, sub, progress, gradientClass = 'from-c
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45 }}
       onClick={onOpen}
-      className=" p-0 shadow-xl hover:shadow-2xl text-black dark:text-white w-[320px] flex-shrink-0 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 transform hover:-translate-y-1 transition-all duration-300"
+      className=" p-0 shadow-sm hover:shadow-md text-black dark:text-white w-[320px] flex-shrink-0 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 transform hover:-translate-y-1 transition-all duration-300"
       style={{ background: undefined }}
     >
-      <div className={`p-6  bg-gradient-to-br ${gradientClass} text-white border border-white/20`}>
+      <div className={`p-6  ${gradientClass} text-white border border-white/10`}>
         <div className="flex items-start justify-between">
           <div className="space-y-2">
             <div className="text-sm font-medium opacity-90">{title}</div>
