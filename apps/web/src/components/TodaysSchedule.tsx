@@ -45,8 +45,8 @@ export default function TodaysSchedule({ onNav }: TodaysScheduleProps) {
 
   if (isLoading) {
     return (
-      <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl  p-8 shadow-2xl border border-gray-200/50 dark:border-gray-700/50 h-full">
-        <div className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">Today's Schedule</div>
+      <div className="bg-white dark:bg-gray-900  p-8 shadow-md border border-gray-200 dark:border-gray-700 h-full">
+        <div className="text-lg font-bold text-gray-900 dark:text-white mb-6">Today's Schedule</div>
         <div className="flex items-center justify-center py-8">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
         </div>
@@ -55,10 +55,10 @@ export default function TodaysSchedule({ onNav }: TodaysScheduleProps) {
   }
 
   return (
-    <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl  p-8 shadow-2xl border border-gray-200/50 dark:border-gray-700/50 h-full">
+    <div className="bg-white dark:bg-gray-900  p-8 shadow-md border border-gray-200 dark:border-gray-700 h-full">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <div className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <div className="text-lg font-bold text-gray-900 dark:text-white">
             Today's Schedule
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function TodaysSchedule({ onNav }: TodaysScheduleProps) {
                 e.preventDefault();
                 onNav?.('schedule');
               }}
-              className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="px-4 py-2 bg-blue-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-sm transform hover:-translate-y-0.5"
             >
               Create Schedule
             </button>
@@ -100,7 +100,7 @@ export default function TodaysSchedule({ onNav }: TodaysScheduleProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-4  border border-blue-200/50 dark:border-blue-700/50 hover:shadow-lg transition-all duration-200"
+              className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-200"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
