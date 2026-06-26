@@ -16,9 +16,9 @@ export default function WeightProgressSection({
   onUpdateWeight
 }: WeightProgressSectionProps) {
   return (
-    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm  p-6 shadow-xl border border-white/20 dark:border-gray-700/50">
+    <div className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700">
       <div className="flex items-center justify-between mb-6">
-        <div className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <div className="text-lg font-bold text-gray-900 dark:text-white">
           Weight progress for 3 months ({getWeightUnit(units)})
         </div>
         <button 
