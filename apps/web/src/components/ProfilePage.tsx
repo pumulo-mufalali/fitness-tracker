@@ -95,7 +95,7 @@ export function ProfilePage({ onClose }: { onClose: () => void }) {
     <div className="min-h-[70vh] p-6">
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center space-x-4">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Your Profile</h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Your Profile</h1>
         </div>
       </div>
 
@@ -118,7 +118,7 @@ export function ProfilePage({ onClose }: { onClose: () => void }) {
         <>
           {/* Show helpful message for new users */}
           {(!currentProfile.age || currentProfile.age === 0 || !currentProfile.weightKg || currentProfile.weightKg === 0 || !currentProfile.heightCm || currentProfile.heightCm === 0) && (
-            <div className="mb-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-700  p-6">
+            <div className="mb-6 bg-gray-50 dark:bg-gray-800 border border-blue-200 dark:border-blue-700  p-6">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
                   <span className="text-white text-sm font-bold">!</span>
@@ -133,7 +133,7 @@ export function ProfilePage({ onClose }: { onClose: () => void }) {
             </div>
           )}
           
-          <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm  p-6 shadow-lg border border-white/20 dark:border-gray-700/50">
+          <div className="bg-white/50 dark:bg-gray-800/50  p-6 shadow-lg border border-gray-200 dark:border-gray-700">
             <UserProfileCard
               profile={currentProfile}
               onUpdateProfile={(updates) => updateProfileMutation.mutate(updates)}
