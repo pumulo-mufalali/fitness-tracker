@@ -38,14 +38,14 @@ function StatCardComponent({ title, main, sub, progress, gradientClass = 'bg-blu
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45 }}
       onClick={onOpen}
-      className=" p-0 shadow-sm hover:shadow-md text-black dark:text-white w-[320px] flex-shrink-0 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 transform hover:-translate-y-1 transition-all duration-300"
+      className=" p-0 shadow-md hover:shadow-lg text-black dark:text-white w-[320px] max-w-full flex-shrink-0 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 transform hover:-translate-y-1 transition-all duration-300"
       style={{ background: undefined }}
     >
-      <div className={`p-6  ${gradientClass} text-white border border-white/10`}>
+      <div className={`p-4 sm:p-6  ${gradientClass} text-white border border-white/10`}>
         <div className="flex items-start justify-between">
           <div className="space-y-2">
             <div className="text-sm font-medium opacity-90">{title}</div>
-            <div className="text-3xl font-bold">{main}</div>
+            <div className="text-2xl sm:text-3xl font-bold">{main}</div>
             {sub && <div className="text-sm opacity-90">{sub}</div>}
           </div>
           <div className="ml-4">{icon}</div>
@@ -80,7 +80,7 @@ function StatCardComponent({ title, main, sub, progress, gradientClass = 'bg-blu
                   transition={{ duration: 0.8, ease: 'easeOut' }}
                 />
               </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold">{progress.value}/{progress.total}</div>
+              <div className="absolute inset-0 flex items-center justify-center text-sm font-medium">{progress.value}/{progress.total}</div>
             </div>
             <div className="ml-4 text-sm opacity-90">{sub}</div>
           </div>
