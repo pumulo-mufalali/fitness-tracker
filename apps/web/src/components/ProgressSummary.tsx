@@ -38,7 +38,7 @@ function ProgressSummaryComponent({ workouts, weightChange }: ProgressSummaryPro
       {/* Weekly Workouts */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-blue-600  p-6 text-white"
+        className="rounded-lg bg-blue-600  p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Weekly Workouts</p>
@@ -46,14 +46,14 @@ function ProgressSummaryComponent({ workouts, weightChange }: ProgressSummaryPro
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
           </svg>
         </div>
-        <p className="mt-2 text-3xl font-bold">{thisWeeksWorkouts.length}</p>
+        <p className="mt-2 text-2xl sm:text-3xl font-bold">{thisWeeksWorkouts.length}</p>
         <p className="text-blue-200">Active Days: {workoutDays}</p>
       </motion.div>
 
       {/* Total Time */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-slate-700 dark:bg-slate-600  p-6 text-white"
+        className="bg-slate-700 dark:bg-slate-600  p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Total Time</p>
@@ -61,14 +61,14 @@ function ProgressSummaryComponent({ workouts, weightChange }: ProgressSummaryPro
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
-        <p className="mt-2 text-3xl font-bold">{totalDuration}m</p>
+        <p className="mt-2 text-2xl sm:text-3xl font-bold">{totalDuration}m</p>
         <p className="text-slate-300">This Week</p>
       </motion.div>
 
       {/* Weight Change */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-emerald-600  p-6 text-white"
+        className="rounded-lg bg-emerald-600  p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Weight Change</p>
@@ -76,7 +76,7 @@ function ProgressSummaryComponent({ workouts, weightChange }: ProgressSummaryPro
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
           </svg>
         </div>
-        <p className="mt-2 text-3xl font-bold">{weightChange > 0 ? "+" : ""}{weightChange.toFixed(1)}kg</p>
+        <p className="mt-2 text-2xl sm:text-3xl font-bold">{weightChange > 0 ? "+" : ""}{weightChange.toFixed(1)}kg</p>
         <p className="text-emerald-100">Last 7 Days</p>
       </motion.div>
     </motion.div>
