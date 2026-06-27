@@ -1,6 +1,8 @@
 ﻿import React, { useState, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import ExerciseGifModal from '../components/exercises/ExerciseGifModal';
+import Footer from '../components/Footer';
 import { exerciseCategories, type Exercise, type ExerciseCategory } from '../lib/exercise-categories';
 import { Search, X, AlertCircle } from 'lucide-react';
 
@@ -9,7 +11,8 @@ interface SearchError {
   type: 'invalid_input' | 'no_results' | 'search_too_long' | 'network_error' | null;
 }
 
-export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
+export default function ExercisesPage() {
+  const navigate = useNavigate();
   const [showGifModal, setShowGifModal] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -146,29 +149,27 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
   }, [filteredCategories]);
 
   return (
-    <div className="min-h-screen gradient-clean-light dark:gradient-clean-dark">
-      <div className="max-w-7xl mx-auto py-12 px-6">
+    <div className="min-h-screen flex flex-col gradient-elegant-light dark:gradient-elegant-dark">
+      <div className="flex-1 max-w-7xl w-full mx-auto py-6 sm:py-12 px-4 sm:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
-          <div className="flex items-center gap-6 mb-6">
-            {onBack && (
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={onBack}
-                className="p-3  bg-white/80 dark:bg-gray-800/80 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-sm border border-gray-200 dark:border-gray-700"
-              >
-                <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-              </motion.button>
-            )}
+          <div className="flex items-center gap-4 sm:gap-6 mb-6">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/')}
+              className="p-3 bg-white/80 dark:bg-gray-800/80 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-md rounded-xl border border-gray-200 dark:border-gray-700"
+            >
+              <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+            </motion.button>
             <div className="flex-1">
-              <h1 className="text-5xl font-black text-gray-900 dark:text-white">
+              <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Exercise Library
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-400 mt-2 font-medium">
@@ -194,7 +195,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
                 onChange={handleSearchChange}
                 placeholder="Search exercises by name or category..."
                 maxLength={MAX_SEARCH_LENGTH}
-                className="w-full pl-12 pr-12 py-4 bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700  text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-lg hover:shadow-sm"
+                className="w-full pl-12 pr-12 py-4 bg-white/80 dark:bg-gray-800/80 rounded-lg border border-gray-200 dark:border-gray-700  text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-lg hover:shadow-sm"
               />
               {searchQuery && (
                 <button
@@ -241,7 +242,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
 
         {/* Display filtered categories with 4 GIFs per row */}
         {filteredCategories.length > 0 ? (
-        <div className="space-y-16">
+        <div className="space-y-10 sm:space-y-16">
             {filteredCategories.map((category, categoryIndex) => (
             <motion.div 
               key={category.category}
@@ -249,11 +250,11 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
             >
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100 flex items-center gap-3">
+              <h2 className="text-xl font-semibold mb-6 sm:mb-8 text-gray-900 dark:text-gray-100 flex items-center gap-3">
                 <div className="w-2 h-8 bg-blue-600 rounded-full"></div>
                 {category.category}
               </h2>
-              <div className="grid grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
                 {category.exercises.map((exercise, exerciseIndex) => (
                   <motion.button
                     key={exercise.id}
@@ -291,7 +292,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <span className="text-white font-bold text-lg block group-hover:text-white transition-colors duration-300">{exercise.name}</span>
+                      <span className="text-white font-semibold text-lg block group-hover:text-white transition-colors duration-300">{exercise.name}</span>
                     </div>
                     <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -311,11 +312,11 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-16"
           >
-            <div className="bg-white/80 dark:bg-gray-800/80  p-12 border border-gray-200 dark:border-gray-700 shadow-lg">
+            <div className="bg-white/80 dark:bg-gray-800/80  p-6 sm:p-12 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg">
               <div className="w-24 h-24 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="w-12 h-12 text-gray-400 dark:text-gray-500" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
                 No exercises found
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
@@ -323,7 +324,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
               </p>
               <button
                 onClick={clearSearch}
-                className="px-6 py-3 bg-blue-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-sm"
+                className="px-6 py-3 rounded-lg bg-blue-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-sm"
               >
                 Clear Search & Show All
               </button>
@@ -332,7 +333,6 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
         )}
         </div>
 
-      {/* Use ExerciseGifModal component which has workout logging built in */}
       {showGifModal && selectedExercise && (
         <ExerciseGifModal
           exercise={selectedExercise}
@@ -342,6 +342,7 @@ export default function ExercisesPage({ onBack }: { onBack?: () => void }) {
           }}
         />
       )}
+      <Footer />
     </div>
   );
 }
