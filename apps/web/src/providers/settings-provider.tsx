@@ -82,7 +82,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<'light' | 'dark' | 'system'>(() => {
     if (typeof window === 'undefined') return 'light';
     const saved = localStorage.getItem("theme") as 'light' | 'dark' | 'system';
-    return saved || currentUser?.theme || 'system';
+    return saved || currentUser?.theme || 'light';
   });
 
   const setTheme = (newTheme: 'light' | 'dark' | 'system') => {
