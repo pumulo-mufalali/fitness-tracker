@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import { X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Line, Doughnut } from 'react-chartjs-2';
 import {
@@ -75,7 +76,6 @@ export default function ProgressModal({
   data,
   isExercise,
   onClose,
-  onOpenGif,
 }: {
   open: boolean;
   title: string;
@@ -83,7 +83,6 @@ export default function ProgressModal({
   data?: { date: string; value: number }[] | WorkoutLog[];
   isExercise?: boolean;
   onClose: () => void;
-  onOpenGif?: (exerciseId: string) => void;
 }) {
   if (!open) return null;
 
@@ -257,13 +256,13 @@ export default function ProgressModal({
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.25 }}
-        className="relative z-10 w-full max-w-lg bg-white dark:bg-neutral-800  p-6 shadow-lg max-h-[90vh] overflow-y-auto outline-none"
+        className="relative z-10 w-full max-w-lg bg-white dark:bg-neutral-800  p-4 sm:p-6 shadow-lg rounded-xl max-h-[90vh] overflow-y-auto outline-none"
         role="dialog"
         aria-modal="true"
         aria-label={`${title} details`}
@@ -275,7 +274,7 @@ export default function ProgressModal({
             <h3 className="text-lg font-semibold text-black dark:text-white">{title}</h3>
             <div className="text-sm text-muted-foreground">Detailed progress</div>
           </div>
-          <button onClick={onClose} className="text-muted-foreground hover:text-black dark:hover:text-white">âœ•</button>
+          <button onClick={onClose} className="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"><X className="h-4 w-4 text-gray-500 dark:text-gray-400" /></button>
         </div>
 
         {/* If exercise modal, show a header area with main GIF and quick stats */}
@@ -287,7 +286,7 @@ export default function ProgressModal({
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-sm text-muted-foreground">Exercises</div>
-                    <div className="text-2xl font-bold">{logs.length} Workouts</div>
+                    <div className="text-xl font-semibold">{logs.length} Workouts</div>
                   </div>
                   <div className="w-28 h-28  overflow-hidden bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
                     {selectedExerciseId ? (
@@ -304,15 +303,10 @@ export default function ProgressModal({
                     <button
                       key={(log as any).id}
                       onClick={() => {
-                        const exId = log.exercise?.id ?? null;
-                        if (exId && onOpenGif) {
-                          onOpenGif(exId);
-                        } else {
-                          setSelectedExerciseId(log.exercise?.id ?? null);
-                        }
+                        setSelectedExerciseId(log.exercise?.id ?? null);
                       }}
                       className={` overflow-hidden border ${selectedExerciseId === log.exercise?.id ? 'ring-2 ring-blue-400' : 'border-transparent'}`}
-                      title={`${log.exercise?.name} â€¢ ${(log as any).durationMinutes} mins`}
+                      title={`${log.exercise?.name} · ${(log as any).durationMinutes} mins`}
                     >
                       <img src={log.exercise?.imageUrl} alt={log.exercise?.name} className="w-full h-20 object-cover" />
                     </button>
@@ -325,7 +319,7 @@ export default function ProgressModal({
 
         <div className="mt-6 grid grid-cols-1 gap-6">
           <div className="flex items-center space-x-4">
-            <div className="w-28 h-28 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-2xl font-bold">{pct}%</div>
+            <div className="w-28 h-28 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-xl font-semibold">{pct}%</div>
             <div>
               <div className="text-sm text-muted-foreground">Progress</div>
               <div className="text-xl font-semibold">{progress?.value ?? 0}/{progress?.total ?? 0}</div>
@@ -338,7 +332,7 @@ export default function ProgressModal({
           </div>
 
           {isExercise && exerciseData && (
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-4">
                 <h4 className="font-medium">Exercise Categories</h4>
                 <div className="space-y-2">
@@ -396,15 +390,15 @@ export default function ProgressModal({
             const avgDuration = logs.length ? Math.round(logs.reduce((sum, log: any) => sum + (log.durationMinutes ?? 0), 0) / logs.length) : 0;
             return (
               <div className="space-y-6">
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="bg-gray-50 dark:bg-gray-900/50 p-4  text-center">
                     <div className="text-sm text-muted-foreground mb-1">Total Calories</div>
-                    <div className="text-2xl font-bold">{totalCalories}</div>
+                    <div className="text-xl font-semibold">{totalCalories}</div>
                     <div className="text-sm text-muted-foreground">kcal burned</div>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-900/50 p-4  text-center">
                     <div className="text-sm text-muted-foreground mb-1">Avg. Duration</div>
-                    <div className="text-2xl font-bold">{avgDuration}</div>
+                    <div className="text-xl font-semibold">{avgDuration}</div>
                     <div className="text-sm text-muted-foreground">mins/session</div>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-900/50 p-4  text-center">
@@ -442,7 +436,7 @@ export default function ProgressModal({
                           <div className="text-right space-y-1">
                             <div className="flex items-center gap-2 justify-end">
                               <span className="font-medium">{log.durationMinutes} mins</span>
-                              <span className="text-sm text-muted-foreground">â€¢</span>
+                              <span className="text-sm text-muted-foreground">·</span>
                               <span className="font-medium">{log.caloriesBurned} kcal</span>
                             </div>
                             {log.notes && (
@@ -457,7 +451,7 @@ export default function ProgressModal({
               </div>
             );
           })() : (
-            <div className="grid grid-cols-3 gap-4 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
               <div className="bg-gray-50 dark:bg-gray-900/50 p-3 ">
                 <div className="text-sm text-muted-foreground">Average</div>
                 <div className="font-semibold mt-1">

@@ -85,7 +85,7 @@ export function ConfirmDialog({
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white dark:bg-gray-800  shadow-md p-6 max-w-md w-full pointer-events-auto border border-gray-200 dark:border-gray-700"
+              className="bg-white dark:bg-gray-800  shadow-md rounded-xl p-6 max-w-md w-full pointer-events-auto border border-gray-200 dark:border-gray-700"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start space-x-4">
@@ -101,16 +101,16 @@ export function ConfirmDialog({
                     {message}
                   </p>
 
-                  <div className="flex space-x-3 justify-end">
+                  <div className="flex flex-wrap gap-3 justify-end">
                     <button
                       onClick={onCancel}
-                      className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600  transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500"
+                      className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600  transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500"
                     >
                       {cancelText}
                     </button>
                     <button
                       onClick={onConfirm}
-                      className={`px-4 py-2 text-sm font-medium text-white  transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${colors.confirm}`}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium text-white  transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${colors.confirm}`}
                     >
                       {confirmText}
                     </button>
@@ -132,4 +132,3 @@ export function ConfirmDialog({
     </AnimatePresence>
   );
 }
-
