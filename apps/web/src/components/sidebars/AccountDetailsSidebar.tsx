@@ -32,30 +32,30 @@ export default function AccountDetailsSidebar({ currentUser }: AccountDetailsSid
 
   return (
     <div className="space-y-6">
-      <div className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700 space-y-6">
-        <div className="text-xl font-bold text-gray-900 dark:text-white">
+      <div className="bg-white dark:bg-gray-800  p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700 space-y-6">
+        <div className="text-base font-normal text-gray-900 dark:text-white">
           Account Details
         </div>
         <div className="space-y-4">
-          <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
+          <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
             <div className="text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wide">Member Since</div>
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mt-2">
+            <div className="text-2xl font-semibold text-gray-900 dark:text-white mt-2">
               {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
             </div>
           </div>
-          <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
+          <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
             <div className="text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wide">Last Active</div>
-            <div className="text-2xl font-bold text-gray-900 dark:text-white mt-2">Today</div>
+            <div className="text-2xl font-semibold text-gray-900 dark:text-white mt-2">Today</div>
           </div>
           {!bmi || !healthStatus ? (
-            <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
+            <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
               <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">Health Status</div>
-              <div className="text-lg font-bold text-gray-700 dark:text-gray-300 mt-2">Complete profile to see BMI</div>
+              <div className="text-base font-semibold text-gray-700 dark:text-gray-300 mt-2">Complete profile to see BMI</div>
             </div>
           ) : (
-            <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
+            <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
               <div className="text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wide">Health Status</div>
-              <div className={`text-2xl font-bold mt-2 ${healthStatus.text}`}>{healthStatus.status}</div>
+              <div className={`text-2xl font-semibold mt-2 ${healthStatus.text}`}>{healthStatus.status}</div>
               <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">BMI: {bmi}</div>
             </div>
           )}
