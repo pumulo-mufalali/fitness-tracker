@@ -1,19 +1,18 @@
 ﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { Play, Timer } from 'lucide-react';
+import AppTitle from './AppTitle';
 
 export default function HeaderBar({ title, weekLine, onNav }: { title: string; weekLine?: string; onNav?: (page: string) => void }) {
   return (
-      <div className="max-w-7xl mx-auto px-6 py-6">
-        <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center space-x-8">
             <motion.h1
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-5xl font-black tracking-tight text-gray-900 dark:text-white"
             >
-              {title}
+              <AppTitle className="text-3xl sm:text-4xl lg:text-5xl" />
             </motion.h1>
           </div>
 
@@ -23,7 +22,7 @@ export default function HeaderBar({ title, weekLine, onNav }: { title: string; w
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.4 }}
-                className="text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 px-4 py-2.5  border border-gray-200 dark:border-gray-700"
+                className="text-sm font-medium text-gray-700 dark:text-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 px-4 py-2.5  border border-gray-200 dark:border-gray-700"
               >
                 {weekLine}
               </motion.div>
@@ -40,7 +39,7 @@ export default function HeaderBar({ title, weekLine, onNav }: { title: string; w
                   e.preventDefault();
                   onNav?.('exercises');
                 }}
-                className="group relative px-7 py-4  bg-blue-600 hover:bg-blue-700 text-white font-bold text-base tracking-wide transition-all duration-300 shadow-md  border border-white/10 overflow-hidden"
+                className="group relative px-4 py-2.5 sm:px-7 sm:py-4  rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-base tracking-wide transition-all duration-300 shadow-md  border border-white/10 overflow-hidden"
               >
                 {/* Shine effect */}
                 <motion.div
@@ -77,6 +76,5 @@ export default function HeaderBar({ title, weekLine, onNav }: { title: string; w
             )}
           </div>
         </div>
-      </div>
   );
 }
