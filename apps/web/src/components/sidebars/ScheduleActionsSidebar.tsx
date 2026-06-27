@@ -17,14 +17,14 @@ export default function ScheduleActionsSidebar({
   isDeleting
 }: ScheduleActionsSidebarProps) {
   return (
-    <div className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700 space-y-6">
-      <div className="text-xl font-bold text-gray-900 dark:text-white">
+    <div className="bg-white dark:bg-gray-800  p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700 space-y-6">
+      <div className="text-lg font-semibold text-gray-900 dark:text-white">
         Schedule Actions
       </div>
       <div className="space-y-4">
         <button 
           onClick={onCreateSchedule} 
-          className="w-full  px-4 py-3 bg-blue-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-sm transform hover:-translate-y-0.5"
+          className="w-full  px-4 py-3 rounded-lg bg-blue-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-sm transform hover:-translate-y-0.5"
         >
           Create Schedule
         </button>
