@@ -37,7 +37,7 @@ export default function AchievementsPage() {
     return (
       <div className="space-y-6">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">My Achievements</h1>
+          <h1 className="text-xl font-semibold text-gray-900 dark:text-white">My Achievements</h1>
         </div>
         <div className="flex items-center justify-center py-12">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-600"></div>
@@ -51,10 +51,10 @@ export default function AchievementsPage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">My Achievements</h1>
+        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">My Achievements</h1>
       </div>
       {/* Achievements Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
         {achievements.map((ach, index) => {
           const Icon = IconComponent(ach.icon);
           return (
@@ -63,14 +63,14 @@ export default function AchievementsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 ${
+              className={`bg-white dark:bg-gray-800  p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 ${
                 !ach.achieved ? 'opacity-75' : ''
               }`}
             >
               <div className="flex items-center space-x-4">
-                <div className={`p-4  shadow-lg ${
-                  ach.achieved 
-                    ? 'bg-emerald-600 text-white' 
+                <div className={`p-4 rounded-lg shadow-lg ${
+                  ach.achieved
+                    ? 'bg-emerald-600 text-white'
                     : 'bg-gray-400 text-white'
                 }`}>
                   <Icon size={28} />
@@ -94,8 +94,8 @@ export default function AchievementsPage() {
                         <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{ach.progress}%</span>
                       </div>
                       <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                        <motion.div 
-                          className="bg-blue-600 h-2 rounded-full"
+                        <motion.div
+                          className="bg-blue-600 rounded-full h-2"
                           initial={{ width: 0 }}
                           animate={{ width: `${ach.progress}%` }}
                           transition={{ duration: 1, delay: index * 0.1 }}
@@ -122,24 +122,24 @@ export default function AchievementsPage() {
       </div>
       
       {/* Stats Summary */}
-      <div className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
-            <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">
+      <div className="bg-white dark:bg-gray-800  p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center">
+          <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
+            <div className="text-xl font-semibold text-green-600 dark:text-green-400 mb-1">
               {achievements.filter(a => a.achieved).length}
             </div>
             <div className="text-sm text-green-700 dark:text-green-300 font-medium">Achievements Unlocked</div>
           </div>
           
-          <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
-            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+          <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
+            <div className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-1">
               {achievements.filter(a => !a.achieved).length}
             </div>
             <div className="text-sm text-blue-700 dark:text-blue-300 font-medium">In Progress</div>
           </div>
           
-          <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
-            <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">
+          <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
+            <div className="text-xl font-semibold text-yellow-600 dark:text-yellow-400 mb-1">
               {achievements.length > 0 
                 ? Math.round((achievements.filter(a => a.achieved).length / achievements.length) * 100)
                 : 0}%
