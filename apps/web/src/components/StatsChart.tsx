@@ -24,20 +24,22 @@ export default function StatsChart({
 
   const weightUnit = getWeightUnit(units);
 
+  const hasWeightData = weightData && weightData.length > 0;
+
   // Check if all weights are the same (straight line scenario)
-  const allWeightsSame = weightData && weightData.length > 0 
-    ? weightData.every(d => d.weight === weightData[0]?.weight)
+  const allWeightsSame = hasWeightData
+    ? weightData!.every(d => d.weight === weightData![0]?.weight)
     : false;
 
   const data = {
-    labels: weightData ? weightData.map(d => d.week) : labels,
-    datasets: weightData ? [
+    labels: hasWeightData ? weightData!.map(d => d.week) : labels,
+    datasets: hasWeightData ? [
       {
         label: `Weight (${weightUnit})`,
-        data: weightData.map(d => d.weight),
+        data: weightData!.map(d => d.weight),
         borderColor: 'rgba(34, 197, 94, 1)',
         backgroundColor: 'rgba(34, 197, 94, 0.15)',
-        tension: allWeightsSame ? 0 : 0.4, // Straight line if all weights are same, otherwise curve
+        tension: allWeightsSame ? 0 : 0.4,
         fill: true,
         pointBackgroundColor: 'rgba(34, 197, 94, 1)',
         pointBorderColor: '#fff',
@@ -93,7 +95,7 @@ export default function StatsChart({
         bodyColor: '#fff',
         borderColor: '#22c55e',
         borderWidth: 1,
-        callbacks: weightData ? {
+        callbacks: hasWeightData ? {
           label: function(context: any) {
             return `Weight: ${context.parsed.y} ${weightUnit}`;
           }
@@ -111,32 +113,37 @@ export default function StatsChart({
           font: { size: 12 }
         }
       },
-      y: { 
+      y: {
         grid: { color: 'rgba(0,0,0,0.05)' },
+        ...(hasWeightData ? { min: 20 } : {}),
         title: {
-          display: weightData ? true : false,
-          text: weightData ? `Weight (${weightUnit})` : undefined,
+          display: !!hasWeightData,
+          text: hasWeightData ? `Weight (${weightUnit})` : undefined,
           color: '#666',
           font: { size: 12 }
         },
-        ticks: weightData ? {
+        ticks: hasWeightData ? {
           callback: function(value: any) {
             return value + ` ${weightUnit}`;
           },
           stepSize: 5,
-          min: 20,
-          max: undefined
         } : undefined,
-        min: weightData ? 20 : undefined
       },
     },
   };
 
-  return (
-    <div className="bg-card  p-4 shadow-sm aspect-[4/3]">
-      <div className="h-full">
-        <Line data={data} options={options as any} />
+  if (weightData && !hasWeightData) {
+    return (
+      <div className="h-full flex flex-col items-center justify-center gap-2 text-center p-6">
+        <p className="text-sm font-medium text-gray-500 dark:text-gray-400">No weight data yet</p>
+        <p className="text-xs text-gray-400 dark:text-gray-500">Log in and record your weight to see your progress here</p>
       </div>
+    );
+  }
+
+  return (
+    <div className="bg-card p-4 shadow-md rounded-xl h-full">
+      <Line data={data} options={options as any} />
     </div>
   );
 }
