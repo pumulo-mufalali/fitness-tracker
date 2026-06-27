@@ -10,4 +10,11 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    watch: {
+      // Don't let the dev watcher hold handles on the build output.
+      // On Windows this causes EBUSY when `vite build` tries to empty dist/.
+      ignored: ['**/dist/**'],
+    },
+  },
 });
