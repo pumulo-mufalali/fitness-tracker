@@ -26,14 +26,14 @@ export function RecentWorkouts({ workouts, exercises }: RecentWorkoutsProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="bg-white dark:bg-gray-800  shadow-lg p-6"
+      className="bg-white dark:bg-gray-800  shadow-lg p-4 sm:p-6"
     >
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Recent Workouts</h2>
+      <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Recent Workouts</h2>
       
       <div className="relative mb-4">
         <input
           type="text"
-          className="block w-full pl-10 pr-3 py-2  border-gray-300 dark:border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+          className="block w-full pl-10 pr-3 py-2  border-gray-300 dark:border-gray-700 rounded-xl shadow-md focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white sm:text-sm"
           placeholder="Search workouts..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
