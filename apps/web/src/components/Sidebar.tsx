@@ -3,14 +3,13 @@ import { motion } from 'framer-motion';
 import { useMemo, useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { User } from '@myfitness/shared';
-import { ThemeToggle } from './theme-toggle';
 import { useAuth } from '../providers/auth-provider';
 import { useSettings } from '../providers/settings-provider';
 import { formatWeight, formatHeight } from '../lib/unit-conversion';
 import { workoutService } from '../lib/firebase-data-service';
 import { exerciseCategories } from '../lib/exercise-categories';
 import type { WorkoutLog } from '../lib/firebase-data-service';
-import { LogOut, Home, Target, User as UserIcon, Calendar, Trophy, BarChart3, Settings, Activity, Clock, Flame } from 'lucide-react';
+import { Home, Target, User as UserIcon, Calendar, Trophy, Settings, Activity, Clock, Flame, Lock } from 'lucide-react';
 
 interface NavItemProps {
   children: React.ReactNode;
@@ -25,11 +24,10 @@ const NavItem = ({ children, active, onClick, icon }: NavItemProps) => (
     transition={{ duration: 0.2 }}
   >
     <button
-      className={`w-full text-left px-4 py-3.5  transition-all duration-300 font-medium flex items-center space-x-3 group ${
-        active 
-          ? 'bg-blue-600 text-white shadow-lg ' 
+      className={`w-full text-left px-4 py-3.5 rounded-lg transition-all duration-300 font-medium flex items-center space-x-3 group ${active
+          ? 'bg-blue-600 text-white shadow-lg '
           : 'hover:bg-gray-50 dark:hover:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:shadow-md hover:text-blue-600 dark:hover:text-blue-400'
-      }`}
+        }`}
       onClick={(e) => {
         e.preventDefault();
         // Set a flag to indicate sidebar navigation - always scroll to top
@@ -45,8 +43,28 @@ const NavItem = ({ children, active, onClick, icon }: NavItemProps) => (
   </motion.li>
 );
 
-export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: string) => void }) {
-  const { logout, user } = useAuth();
+const LOCKED_PAGES: Record<string, string> = {
+  workouts: 'Workout Logs',
+  goals: 'My Goals',
+  profile: 'Profile Settings',
+  schedule: 'Schedule',
+  achievements: 'Achievements',
+};
+
+export function Sidebar({ profile, onNav, onLoginRequired }: {
+  profile?: any;
+  onNav?: (page: string) => void;
+  onLoginRequired?: (pageName: string) => void;
+}) {
+  const { user, isAuthenticated } = useAuth();
+
+  const handleNav = (page: string) => {
+    if (!isAuthenticated && LOCKED_PAGES[page]) {
+      onLoginRequired?.(LOCKED_PAGES[page]!);
+      return;
+    }
+    onNav?.(page);
+  };
   const settings = useSettings();
 
   // Fetch latest workout
@@ -88,34 +106,50 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
   }, [bmi]);
 
   return (
-    <aside className="w-80 shrink-0 pr-6">
+    <aside className="w-full">
       <div className="sticky top-8 space-y-6">
         {/* Profile Card */}
-        <motion.button 
+        <motion.button
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          onClick={() => onNav?.('profile')} 
-          className="w-full bg-white dark:bg-gray-900  p-6 shadow-sm hover:shadow-md transition-all duration-300 relative group border border-gray-200 dark:border-gray-700"
+          onClick={() => handleNav('profile')}
+          className="w-full bg-white dark:bg-gray-900 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 relative group border border-gray-200 dark:border-gray-700"
         >
+          {!isAuthenticated && (
+            <div className="absolute inset-0 rounded-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm flex flex-col items-center justify-center gap-4 z-10">
+              <div className="w-14 h-14 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center">
+                <Lock className="w-7 h-7 text-gray-400 dark:text-gray-500" />
+              </div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium text-center px-4">
+                Sign in to view your profile
+              </p>
+              <button
+                onClick={(e) => { e.stopPropagation(); onLoginRequired?.('Profile'); }}
+                className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors"
+              >
+                Login
+              </button>
+            </div>
+          )}
           <div className="flex items-center space-x-4 mb-6">
-            <div className="w-16 h-16  bg-blue-600 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+            <div className="w-16 h-16  rounded-xl bg-blue-600 flex items-center justify-center text-xl font-semibold text-white shadow-lg">
               {profile?.name?.charAt(0) ?? 'U'}
             </div>
             <div>
-              <div className="text-xl font-bold text-gray-900 dark:text-white">{profile?.name ?? 'User'}</div>
+              <div className="text-lg font-semibold text-gray-900 dark:text-white">{profile?.name ?? 'User'}</div>
               <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">{profile?.age && profile.age > 0 ? `${profile.age} years old` : 'Age not set'}</div>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gray-50 dark:bg-gray-800  p-4 text-center border border-gray-200 dark:border-gray-700">
+            <div className="rounded-lg bg-gray-50 dark:bg-gray-800  p-4 text-center border border-gray-200 dark:border-gray-700">
               <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide">Height</div>
               <div className="font-bold text-gray-900 dark:text-white mt-1">
                 {profile?.heightCm && profile.heightCm > 0 ? formatHeight(profile.heightCm, settings.units) : 'Not set'}
               </div>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-800  p-4 text-center border border-gray-200 dark:border-gray-700">
+            <div className="rounded-lg bg-gray-50 dark:bg-gray-800  p-4 text-center border border-gray-200 dark:border-gray-700">
               <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide">Weight</div>
               <div className="font-bold text-gray-900 dark:text-white mt-1">
                 {profile?.weightKg && profile.weightKg > 0 ? formatWeight(profile.weightKg, settings.units) : 'Not set'}
@@ -125,7 +159,7 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
 
           {/* BMI Display */}
           {bmi && bmiCategory && (
-            <div className="mt-4 bg-gray-50 dark:bg-gray-800  p-4 border border-gray-200 dark:border-gray-700">
+            <div className="mt-4 rounded-lg bg-gray-50 dark:bg-gray-800  p-4 border border-gray-200 dark:border-gray-700">
               <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide text-center">BMI</div>
               <div className="flex items-center justify-between mt-2">
                 <div className="font-bold text-gray-900 dark:text-white text-lg">{bmi}</div>
@@ -136,21 +170,21 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
 
           {/* Fitness Goal Display */}
           {profile?.fitnessGoal && (
-            <div className="mt-4 bg-gray-50 dark:bg-gray-800  p-4 border border-gray-200 dark:border-gray-700">
+            <div className="mt-4 rounded-lg bg-gray-50 dark:bg-gray-800  p-4 border border-gray-200 dark:border-gray-700">
               <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide">Fitness Goal</div>
               <div className="text-sm text-gray-700 dark:text-gray-300 mt-2 line-clamp-2">{profile.fitnessGoal}</div>
             </div>
           )}
 
-          <div className="absolute inset-0  border-2 border-blue-500/0 group-hover:border-blue-500/20 transition-all duration-300 pointer-events-none" />
+          <div className="absolute inset-0 rounded-xl border-2 border-blue-500/0 group-hover:border-blue-500/20 transition-all duration-300 pointer-events-none" />
         </motion.button>
 
         {/* Navigation */}
-        <motion.nav 
+        <motion.nav
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white dark:bg-gray-900  p-6 shadow-sm border border-gray-200 dark:border-gray-700"
+          className="bg-white dark:bg-gray-900  p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700"
           role="navigation"
           aria-label="Primary"
         >
@@ -195,52 +229,31 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
               }
             }}
           >
-            <NavItem onClick={() => onNav?.('dashboard')} icon={<Home className="w-5 h-5" />}>Home</NavItem>
-            <NavItem onClick={() => onNav?.('workouts')} icon={<Activity className="w-5 h-5" />}>Workout Logs</NavItem>
-            <NavItem onClick={() => onNav?.('goals')} icon={<Target className="w-5 h-5" />}>My Goals</NavItem>
-            <NavItem onClick={() => onNav?.('profile')} icon={<UserIcon className="w-5 h-5" />}>Profile Settings</NavItem>
-            <NavItem onClick={() => onNav?.('schedule')} icon={<Calendar className="w-5 h-5" />}>Schedule</NavItem>
-            <NavItem onClick={() => onNav?.('achievements')} icon={<Trophy className="w-5 h-5" />}>Achievements</NavItem>
-            <NavItem onClick={() => onNav?.('settings')} icon={<Settings className="w-5 h-5" />}>Settings</NavItem>
-            
-            <li className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-              <ThemeToggle />
-            </li>
-            
-            <li className="pt-2">
-              <motion.button
-                whileHover={{ x: 4 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={logout}
-                className="w-full text-left px-4 py-3.5  transition-all duration-300 hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 dark:text-red-400 flex items-center space-x-3 font-medium hover:shadow-md group"
-              >
-                <LogOut className="w-5 h-5 transition-colors duration-200 group-hover:text-red-700 dark:group-hover:text-red-300" />
-                <span>Sign Out</span>
-              </motion.button>
-            </li>
+            <NavItem onClick={() => handleNav('dashboard')} icon={<Home className="w-5 h-5" />}>Home</NavItem>
+            <NavItem onClick={() => handleNav('workouts')} icon={<Activity className="w-5 h-5" />}>Workout Logs</NavItem>
+            <NavItem onClick={() => handleNav('goals')} icon={<Target className="w-5 h-5" />}>My Goals</NavItem>
+            <NavItem onClick={() => handleNav('profile')} icon={<UserIcon className="w-5 h-5" />}>Profile Settings</NavItem>
+            <NavItem onClick={() => handleNav('schedule')} icon={<Calendar className="w-5 h-5" />}>Schedule</NavItem>
+            <NavItem onClick={() => handleNav('achievements')} icon={<Trophy className="w-5 h-5" />}>Achievements</NavItem>
+            <NavItem onClick={() => handleNav('settings')} icon={<Settings className="w-5 h-5" />}>Settings</NavItem>
           </ul>
         </motion.nav>
 
         {/* Latest Workout Card */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white dark:bg-gray-900  p-6 shadow-sm border border-gray-200 dark:border-gray-700"
+          className="bg-white dark:bg-gray-900  p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700"
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-blue-600  flex items-center justify-center">
-              <Activity className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">Latest Workout</h3>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Your most recent session</p>
-            </div>
+          <div className="mb-4 text-center">
+            <h3 className="text-base font-semibold text-gray-900 dark:text-white">Latest Workout</h3>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Your most recent session</p>
           </div>
 
           {latestWorkout ? (
             <div className="space-y-3">
-              <div className="bg-white dark:bg-gray-800  p-4 border border-gray-200 dark:border-gray-700">
+              <div className="bg-white dark:bg-gray-800  p-4 rounded-lg border border-gray-200 dark:border-gray-700">
                 <div className="font-semibold text-gray-900 dark:text-white mb-2">
                   {getExerciseName(latestWorkout.exerciseId)}
                 </div>
@@ -255,8 +268,8 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
                   </div>
                 </div>
                 <div className="mt-2 text-xs text-gray-500 dark:text-gray-500">
-                  {new Date(latestWorkout.date).toLocaleDateString('en-US', { 
-                    month: 'short', 
+                  {new Date(latestWorkout.date).toLocaleDateString('en-US', {
+                    month: 'short',
                     day: 'numeric',
                     year: 'numeric'
                   })}
@@ -265,11 +278,10 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  // Set sidebar nav flag for consistent scroll-to-top behavior
                   sessionStorage.setItem('sidebar_nav', 'true');
-                  onNav?.('workouts');
+                  handleNav('workouts');
                 }}
-                className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-sm text-sm"
+                className="w-full px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-sm text-sm"
               >
                 View All Workouts
               </button>
@@ -285,7 +297,7 @@ export function Sidebar({ profile, onNav }: { profile?: any; onNav?: (page: stri
                   e.preventDefault();
                   onNav?.('dashboard');
                 }}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-sm text-sm"
+                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium  transition-all duration-200 shadow-lg hover:shadow-sm text-sm"
               >
                 Start Your First Workout
               </button>
