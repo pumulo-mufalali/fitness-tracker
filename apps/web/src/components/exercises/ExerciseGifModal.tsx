@@ -399,7 +399,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.25 }}
-        className="relative z-10 bg-white dark:bg-gray-800  p-6 shadow-md w-full max-w-4xl max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700 my-4 outline-none"
+        className="relative z-10 bg-white dark:bg-gray-800  p-5 sm:p-6 shadow-md rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700 my-4 outline-none"
         role="dialog"
         aria-modal="true"
         aria-label={`${exercise.name} details`}
@@ -416,17 +416,17 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
           </svg>
         </button>
 
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
           {exercise.name}
         </h2>
 
-        <div className="relative bg-gray-50 dark:bg-gray-800  overflow-hidden mb-4 max-h-[50vh] border border-gray-200 dark:border-gray-700">
+        <div className="relative rounded-lg bg-gray-50 dark:bg-gray-800  overflow-hidden mb-4 max-h-[50vh] border border-gray-200 dark:border-gray-700">
           <div className="absolute top-4 right-4 z-20 flex flex-col gap-2">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleZoomIn}
-              className="w-10 h-10 bg-white dark:bg-gray-800  flex items-center justify-center shadow-lg hover:shadow-sm transition-all duration-200 border border-gray-200 dark:border-gray-700"
+              className="w-10 h-10 rounded-xl bg-white dark:bg-gray-800  flex items-center justify-center shadow-lg hover:shadow-sm transition-all duration-200 border border-gray-200 dark:border-gray-700"
               aria-label="Zoom in"
             >
               <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -438,7 +438,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleZoomOut}
-              className="w-10 h-10 bg-white dark:bg-gray-800  flex items-center justify-center shadow-lg hover:shadow-sm transition-all duration-200 border border-gray-200 dark:border-gray-700"
+              className="w-10 h-10 rounded-xl bg-white dark:bg-gray-800  flex items-center justify-center shadow-lg hover:shadow-sm transition-all duration-200 border border-gray-200 dark:border-gray-700"
               aria-label="Zoom out"
             >
               <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -450,7 +450,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleResetZoom}
-              className="w-10 h-10 bg-white dark:bg-gray-800  flex items-center justify-center shadow-lg hover:shadow-sm transition-all duration-200 border border-gray-200 dark:border-gray-700"
+              className="w-10 h-10 rounded-xl bg-white dark:bg-gray-800  flex items-center justify-center shadow-lg hover:shadow-sm transition-all duration-200 border border-gray-200 dark:border-gray-700"
               aria-label="Reset zoom"
             >
               <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -459,15 +459,15 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
             </motion.button>
           </div>
 
-          <div className="absolute top-4 left-4 z-20 bg-white dark:bg-gray-800  px-3 py-2 shadow-lg border border-gray-200 dark:border-gray-700">
-            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+          <div className="absolute top-4 left-4 z-20 bg-white dark:bg-gray-800  px-3 py-2 shadow-lg rounded-xl border border-gray-200 dark:border-gray-700">
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
               {Math.round(zoomLevel * 100)}%
             </span>
           </div>
 
-          <div className="absolute bottom-4 left-4 z-20 bg-white dark:bg-gray-800  px-3 py-2 shadow-lg border border-gray-200 dark:border-gray-700">
+          <div className="absolute bottom-4 left-4 z-20 bg-white dark:bg-gray-800  px-3 py-2 shadow-lg rounded-xl border border-gray-200 dark:border-gray-700">
             <span className="text-xs text-gray-600 dark:text-gray-400">
-              Scroll to zoom â€¢ Drag to pan
+              Scroll to zoom · Drag to pan
             </span>
           </div>
 
@@ -497,7 +497,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
           </div>
         </div>
 
-        <div className="bg-gray-50 dark:bg-gray-800  p-4 border border-gray-200 dark:border-gray-700">
+        <div className="rounded-lg bg-gray-50 dark:bg-gray-800  p-4 border border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 text-center">
             Exercise Timer
           </h3>
@@ -556,7 +556,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
                   }
                 }}
                 disabled={isTimerRunning}
-                className="w-16 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                className="w-16 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
               />
             </div>
 
@@ -574,7 +574,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
                   }
                 }}
                 disabled={isTimerRunning}
-                className="w-16 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                className="w-16 px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
               />
             </div>
           </div>
@@ -584,7 +584,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
               <button
                 onClick={handleStartTimer}
                 disabled={timerMinutes === 0 && timerSeconds === 0}
-                className="px-6 py-3  bg-blue-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                className="px-6 py-3  rounded-lg bg-blue-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
@@ -594,7 +594,7 @@ export default function ExerciseGifModal({ exercise, onClose }: ExerciseGifModal
             ) : (
               <button
                 onClick={handleStopTimer}
-                className="px-6 py-3  bg-amber-500 hover:bg-amber-600 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-sm flex items-center gap-2"
+                className="px-6 py-3  rounded-lg bg-amber-500 hover:rounded-lg bg-amber-600 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-sm flex items-center gap-2"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-2 0v6a1 1 0 102 0V7z" clipRule="evenodd" />
