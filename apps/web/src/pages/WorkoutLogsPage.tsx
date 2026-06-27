@@ -127,7 +127,7 @@ export default function WorkoutLogsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
             Workout Logs
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -137,56 +137,56 @@ export default function WorkoutLogsPage() {
       </div>
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
+          className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center gap-2 mb-2">
             <Activity className="w-5 h-5 text-blue-600 dark:text-blue-400" />
             <div className="text-sm text-blue-600 dark:text-blue-400 font-medium">Total Workouts</div>
           </div>
-          <div className="text-3xl font-bold text-blue-700 dark:text-blue-300">{stats.totalWorkouts}</div>
+          <div className="text-xl font-semibold text-blue-700 dark:text-blue-300">{stats.totalWorkouts}</div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
+          className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center gap-2 mb-2">
             <Clock className="w-5 h-5 text-purple-600 dark:text-purple-400" />
             <div className="text-sm text-purple-600 dark:text-purple-400 font-medium">Total Minutes</div>
           </div>
-          <div className="text-3xl font-bold text-purple-700 dark:text-purple-300">{stats.totalMinutes}</div>
+          <div className="text-xl font-semibold text-purple-700 dark:text-purple-300">{stats.totalMinutes}</div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
+          className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center gap-2 mb-2">
             <Flame className="w-5 h-5 text-orange-600 dark:text-orange-400" />
             <div className="text-sm text-orange-600 dark:text-orange-400 font-medium">Total Calories</div>
           </div>
-          <div className="text-3xl font-bold text-orange-700 dark:text-orange-300">{stats.totalCalories}</div>
+          <div className="text-xl font-semibold text-orange-700 dark:text-orange-300">{stats.totalCalories}</div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
+          className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center gap-2 mb-2">
             <Activity className="w-5 h-5 text-green-600 dark:text-green-400" />
             <div className="text-sm text-green-600 dark:text-green-400 font-medium">Avg Intensity</div>
           </div>
-          <div className="text-3xl font-bold text-green-700 dark:text-green-300">{stats.avgIntensity}</div>
+          <div className="text-xl font-semibold text-green-700 dark:text-green-300">{stats.avgIntensity}</div>
         </motion.div>
       </div>
 
@@ -199,7 +199,7 @@ export default function WorkoutLogsPage() {
               placeholder="Search workouts by exercise name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-2 pl-10  border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300"
+              className="w-full px-4 py-2 pl-10  rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300"
             />
             <svg className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -211,7 +211,7 @@ export default function WorkoutLogsPage() {
           <select
             value={filterIntensity}
             onChange={(e) => setFilterIntensity(e.target.value as 'all' | 'low' | 'medium' | 'high')}
-            className="px-4 py-2  border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300"
+            className="px-4 py-2  rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500 transition-all duration-300"
           >
             <option value="all">All Intensities</option>
             <option value="low">Low Intensity</option>
@@ -224,7 +224,7 @@ export default function WorkoutLogsPage() {
       {/* Workout Logs List */}
       <div className="space-y-4">
         {filteredLogs.length === 0 ? (
-          <div className="text-center py-12 bg-white/50 dark:bg-gray-800/50  border border-gray-200 dark:border-gray-700">
+          <div className="text-center py-12 bg-white/50 dark:bg-gray-800/50  rounded-lg border border-gray-200 dark:border-gray-700">
             <Activity className="w-16 h-16 text-gray-400 mx-auto mb-4" />
             <p className="text-gray-600 dark:text-gray-400 text-lg font-medium">
               {workoutLogs.length === 0 ? 'No workouts logged yet' : 'No workouts match your filters'}
@@ -252,7 +252,7 @@ export default function WorkoutLogsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white dark:bg-gray-800  p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-sm transition-all duration-200"
+                className="bg-white dark:bg-gray-800  p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700 transition-all duration-200"
               >
                 <div className="flex items-start gap-4">
                   {/* Exercise Image */}
@@ -270,10 +270,10 @@ export default function WorkoutLogsPage() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-4 mb-2">
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
                           {exerciseName}
                         </h3>
-                        <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-600 dark:text-gray-400">
                           <div className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
                             <span>{formattedDate}</span>
