@@ -1,5 +1,7 @@
 ﻿import React, { useEffect, useRef, useMemo, useCallback, useState } from 'react';
 import Sidebar from './Sidebar';
+import AppTitle from './AppTitle';
+import { Menu, X } from 'lucide-react';
 import { useAuth } from '../providers/auth-provider';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useToast } from '../providers/toast-provider';
@@ -19,6 +21,7 @@ import SettingsPage from '../pages/SettingsPage';
 import WorkoutLogsPage from '../pages/WorkoutLogsPage';
 import ProgressModal from './ProgressModal';
 import { MotivationCard } from './MotivationCard';
+import Footer from './Footer';
 import { useSettings } from '../providers/settings-provider';
 import { convertWeightData } from '../lib/unit-conversion';
 import type { WorkoutLog } from '../lib/firebase-data-service';
@@ -34,15 +37,23 @@ import DashboardPage from './dashboard/DashboardPage';
 
 export default function DashboardLayout({
   onNav,
-  onOpenGif,
+  onLoginRequired,
   centerPage,
 }: {
   onNav?: (page: string) => void;
-  onOpenGif?: (exerciseId: string) => void;
-  centerPage?: 'dashboard' | 'goals' | 'gifs' | string;
+  onLoginRequired?: (pageName: string) => void;
+  centerPage?: 'dashboard' | 'goals' | string;
 }) {
   const { showSuccess } = useToast();
   const [showDeleteConfirmDialog, setShowDeleteConfirmDialog] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  // Lock background scroll while the mobile nav drawer is open
+  useEffect(() => {
+    if (!mobileNavOpen) return;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileNavOpen]);
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const settings = useSettings();
@@ -162,6 +173,7 @@ export default function DashboardLayout({
 
   // Generate weekly weight data for the last 3 months (12 weeks) based on real Firestore data
   const generateWeeklyWeightData = useCallback((): { week: string; weight: number }[] => {
+    if (!user?.uid) return [];
     const currentWeight = currentUser?.weightKg || 70;
     const weeks = [
       'Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 
@@ -281,24 +293,60 @@ export default function DashboardLayout({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['weight', 'history', user?.uid] });
       queryClient.invalidateQueries({ queryKey: ['user', 'profile', user?.uid] });
+      showSuccess('Weight updated successfully!');
     },
   });
 
 
 
   return (
-    <>
-      <div className="min-h-screen gradient-elegant-light dark:gradient-elegant-dark">
-        {/* Modern Background Pattern */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-200/10 dark:bg-blue-900/10 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-60 animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-200/10 dark:bg-indigo-900/10 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-60 animate-pulse" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-40 left-1/2 w-96 h-96 bg-emerald-200/10 dark:bg-emerald-900/10 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-60 animate-pulse" style={{ animationDelay: '4s' }}></div>
-        </div>
+    <div className="min-h-screen flex flex-col gradient-elegant-light dark:gradient-elegant-dark">
+      {/* Mobile top bar with hamburger (hidden on desktop) */}
+      <div className="lg:hidden sticky top-0 z-40 flex items-center justify-between gap-3 px-4 py-3 bg-white/90 dark:bg-gray-900/90 backdrop-blur border-b border-gray-200 dark:border-gray-700">
+        <button
+          type="button"
+          onClick={() => setMobileNavOpen(true)}
+          aria-label="Open navigation menu"
+          aria-expanded={mobileNavOpen}
+          className="p-2 -ml-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+        <AppTitle className="text-xl" />
+        <div className="w-10" aria-hidden="true" />
+      </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-3">
-            <Sidebar profile={currentUser} onNav={onNav} />
+      {/* Mobile navigation drawer (hidden on desktop) */}
+      {mobileNavOpen && (
+        <div className="lg:hidden fixed inset-0 z-50">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setMobileNavOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="absolute left-0 top-0 h-full w-[85%] max-w-xs overflow-y-auto bg-gray-50 dark:bg-gray-950 p-4 shadow-2xl">
+            <div className="flex justify-end mb-2">
+              <button
+                type="button"
+                onClick={() => setMobileNavOpen(false)}
+                aria-label="Close navigation menu"
+                className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <Sidebar
+              profile={currentUser}
+              onNav={(page) => { setMobileNavOpen(false); onNav?.(page); }}
+              onLoginRequired={(pageName) => { setMobileNavOpen(false); onLoginRequired?.(pageName); }}
+            />
+          </div>
+        </div>
+      )}
+
+      <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          <div className="hidden lg:block lg:col-span-3">
+            <Sidebar profile={currentUser} onNav={onNav} onLoginRequired={onLoginRequired} />
           </div>
 
           <div id="main-content" role="main" className="lg:col-span-9 space-y-8">
@@ -306,7 +354,7 @@ export default function DashboardLayout({
             <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <div className="lg:col-span-2">
-                  <div className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700">
                     <MyGoalsPage />
                   </div>
                 </div>
@@ -318,7 +366,7 @@ export default function DashboardLayout({
           ) : centerPage === 'profile' ? (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2">
-                <div className="bg-white dark:bg-gray-800  shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+                <div className="bg-white dark:bg-gray-800  shadow-md rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                   <ProfilePage onClose={() => onNav?.('dashboard')} />
                 </div>
               </div>
@@ -329,7 +377,7 @@ export default function DashboardLayout({
           ) : centerPage === 'schedule' ? (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2">
-                <div className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700">
                   <SchedulePage />
                 </div>
               </div>
@@ -348,7 +396,7 @@ export default function DashboardLayout({
             <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
-                  <div className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700">
                     <AchievementsPage />
                   </div>
                 </div>
@@ -361,7 +409,7 @@ export default function DashboardLayout({
             <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
-                  <div className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700">
                     <SettingsPage />
                   </div>
                 </div>
@@ -374,7 +422,7 @@ export default function DashboardLayout({
             <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
-                  <div className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                  <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700">
                     <WorkoutLogsPage />
                   </div>
                 </div>
@@ -391,7 +439,6 @@ export default function DashboardLayout({
               units={settings.units}
               onUpdateWeight={() => setShowDetailedStats(true)}
               onNav={onNav}
-              onOpenExercise={(exercise) => onOpenGif?.(exercise.id)}
             />
           )}
 
@@ -403,7 +450,6 @@ export default function DashboardLayout({
               data={modalStat.data}
               isExercise={modalStat.isExercise}
               onClose={() => setModalStat(null)}
-              onOpenGif={(id: string) => { setModalStat(null); onOpenGif?.(id); }}
             />
           )}
 
@@ -441,14 +487,14 @@ export default function DashboardLayout({
           {showEditInfoDialog && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
               <div className="absolute inset-0 bg-black/50" onClick={() => setShowEditInfoDialog(false)} />
-              <div className="relative bg-white dark:bg-gray-800  p-8 shadow-md w-full max-w-md border border-gray-200 dark:border-gray-700">
+              <div className="relative bg-white dark:bg-gray-800 p-5 sm:p-8 shadow-md rounded-xl w-full max-w-md max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-12  bg-blue-600 flex items-center justify-center">
+                  <div className="w-12 h-12  rounded-xl bg-blue-600 flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                     Edit Schedule
                   </h2>
                 </div>
@@ -456,16 +502,16 @@ export default function DashboardLayout({
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                     To edit your schedule, simply click on any day card in your weekly schedule. You can add, modify, or remove activities for each day.
                   </p>
-                  <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-blue-200 dark:border-blue-700">
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-blue-200 dark:border-blue-700">
                     <p className="text-sm text-blue-700 dark:text-blue-300">
-                      ðŸ’¡ Tip: You can click on any day (Monday through Sunday) to open the edit form for that specific day.
+                      Tip: You can click on any day (Monday through Sunday) to open the edit form for that specific day.
                     </p>
                   </div>
                 </div>
                 <div className="mt-6 flex justify-end">
                   <button
                     onClick={() => setShowEditInfoDialog(false)}
-                    className="px-6 py-3  bg-blue-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-sm"
+                    className="px-6 py-3  rounded-lg bg-blue-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium transition-all duration-200 shadow-lg hover:shadow-sm"
                   >
                     Got it!
                   </button>
@@ -486,8 +532,8 @@ export default function DashboardLayout({
           />
 
           </div>
-        </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
