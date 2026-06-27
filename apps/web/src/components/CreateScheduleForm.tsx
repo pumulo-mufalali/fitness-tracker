@@ -1,4 +1,5 @@
 ﻿import React, { useState } from 'react';
+import { X } from 'lucide-react';
 import { useToast } from '../providers/toast-provider';
 
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -74,14 +75,14 @@ export default function CreateScheduleForm({ onClose, onSave }: { onClose: () =>
   };
 
   return (
-    <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
-      <div className="bg-card  p-6 shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
-        <h2 className="text-2xl font-bold mb-4">Create Weekly Schedule</h2>
+    <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+      <div className="bg-card  p-4 sm:p-6 shadow-lg rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+        <h2 className="text-xl font-semibold mb-4">Create Weekly Schedule</h2>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {days.map(day => (
-              <div key={day} className="bg-gray-50 dark:bg-gray-900/50 p-4 ">
-                <h3 className="font-bold text-lg mb-2">{day}</h3>
+              <div key={day} className="bg-gray-50 dark:bg-gray-900/50 rounded-lg p-4 ">
+                <h3 className="font-semibold text-lg mb-2">{day}</h3>
                 {(schedule[day.toLowerCase()] || []).map((item, index) => (
                   <div key={index} className="flex items-center space-x-2 mb-2">
                     <input
@@ -89,27 +90,27 @@ export default function CreateScheduleForm({ onClose, onSave }: { onClose: () =>
                       placeholder="Time"
                       value={item.time}
                       onChange={e => handleItemChange(day, index, 'time', e.target.value)}
-                      className="w-1/3 p-2 rounded bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700"
+                      className="w-1/3 p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700"
                     />
                     <input
                       type="text"
                       placeholder="Activity"
                       value={item.activity}
                       onChange={e => handleItemChange(day, index, 'activity', e.target.value)}
-                      className="w-2/3 p-2 rounded bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700"
+                      className="w-2/3 p-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700"
                     />
-                    <button type="button" onClick={() => handleRemoveItem(day, index)} className="text-red-500">âœ•</button>
+                    <button type="button" onClick={() => handleRemoveItem(day, index)} className="text-red-500 hover:text-red-600"><X className="h-4 w-4" /></button>
                   </div>
                 ))}
-                <button type="button" onClick={() => handleAddItem(day)} className="w-full text-sm py-1 px-2 rounded bg-blue-500/20 hover:bg-blue-500/30 transition-colors">
+                <button type="button" onClick={() => handleAddItem(day)} className="w-full text-sm py-1 px-2 rounded-lg bg-blue-500/20 hover:bg-blue-500/30 transition-colors">
                   + Add Item
                 </button>
               </div>
             ))}
           </div>
-          <div className="mt-6 flex justify-end space-x-4">
-            <button type="button" onClick={onClose} className="px-4 py-2  bg-gray-200 dark:bg-gray-700">Cancel</button>
-            <button type="submit" className="px-4 py-2  bg-blue-600 text-white">Save Schedule</button>
+          <div className="mt-6 flex flex-wrap justify-end gap-4">
+            <button type="button" onClick={onClose} className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700">Cancel</button>
+            <button type="submit" className="px-4 py-2  rounded-lg bg-blue-600 text-white">Save Schedule</button>
           </div>
         </form>
       </div>
