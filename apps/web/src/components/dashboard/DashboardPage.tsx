@@ -4,7 +4,6 @@ import ExerciseBrowser from '../exercises/ExerciseBrowser';
 import TodaysSchedule from '../TodaysSchedule';
 import WeightProgressSection from './WeightProgressSection';
 import { MotivationCard } from '../MotivationCard';
-import type { Exercise } from '../../lib/exercise-categories';
 
 interface DashboardPageProps {
   labels: string[];
@@ -12,7 +11,6 @@ interface DashboardPageProps {
   units: 'metric' | 'imperial';
   onUpdateWeight: () => void;
   onNav?: (page: string) => void;
-  onOpenExercise?: (exercise: Exercise) => void;
 }
 
 export default function DashboardPage({
@@ -21,34 +19,28 @@ export default function DashboardPage({
   units,
   onUpdateWeight,
   onNav,
-  onOpenExercise
 }: DashboardPageProps) {
   return (
     <>
-      <div className="bg-white dark:bg-gray-900  p-8 shadow-md border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-900  p-4 sm:p-6 lg:p-8 shadow-md rounded-xl border border-gray-200 dark:border-gray-700">
         <HeaderBar title="FITNESS TRACKER" onNav={onNav} />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2">
-          <ExerciseBrowser onOpenExercise={onOpenExercise} />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="lg:col-span-2 flex flex-col gap-4 sm:gap-6 lg:gap-8">
+          <ExerciseBrowser />
+          <div className="flex-1">
+            <WeightProgressSection
+              labels={labels}
+              weightData={weightData}
+              units={units}
+              onUpdateWeight={onUpdateWeight}
+            />
+          </div>
         </div>
 
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 flex flex-col gap-4">
           <TodaysSchedule onNav={onNav} />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          <WeightProgressSection
-            labels={labels}
-            weightData={weightData}
-            units={units}
-            onUpdateWeight={onUpdateWeight}
-          />
-        </div>
-        <div className="lg:col-span-1 space-y-6">
           <MotivationCard />
         </div>
       </div>
