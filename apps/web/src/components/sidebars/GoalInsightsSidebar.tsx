@@ -21,22 +21,22 @@ export default function GoalInsightsSidebar({ goals }: GoalInsightsSidebarProps)
     : 0;
 
   return (
-    <div className="bg-white dark:bg-gray-800  p-6 shadow-sm border border-gray-200 dark:border-gray-700 space-y-6">
-      <div className="text-xl font-bold text-gray-900 dark:text-white">
+    <div className="bg-white dark:bg-gray-800  p-4 sm:p-6 shadow-md rounded-xl border border-gray-200 dark:border-gray-700 space-y-6">
+      <div className="text-lg font-semibold text-gray-900 dark:text-white">
         Goal Insights
       </div>
       <div className="space-y-4">
-        <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
+        <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
           <div className="text-sm text-blue-600 dark:text-blue-400 font-medium">Goals in progress</div>
-          <div className="text-3xl font-bold text-blue-700 dark:text-blue-300 mt-2">{goalsInProgress}</div>
+          <div className="text-xl font-semibold text-blue-700 dark:text-blue-300 mt-2">{goalsInProgress}</div>
         </div>
-        <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
+        <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
           <div className="text-sm text-green-600 dark:text-green-400 font-medium">Completed goals</div>
-          <div className="text-3xl font-bold text-green-700 dark:text-green-300 mt-2">{completedGoals}</div>
+          <div className="text-xl font-semibold text-green-700 dark:text-green-300 mt-2">{completedGoals}</div>
         </div>
-        <div className="bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
+        <div className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4  border border-gray-200 dark:border-gray-700">
           <div className="text-sm text-purple-600 dark:text-purple-400 font-medium">Average completion</div>
-          <div className="text-3xl font-bold text-purple-700 dark:text-purple-300 mt-2">{averageCompletion}%</div>
+          <div className="text-xl font-semibold text-purple-700 dark:text-purple-300 mt-2">{averageCompletion}%</div>
         </div>
       </div>
     </div>
