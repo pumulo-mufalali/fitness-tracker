@@ -1,41 +1,30 @@
 import { onRequest } from 'firebase-functions/v2/https';
 import { appRouter } from './routers';
 import { createContext } from './context';
-import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
+import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import * as admin from 'firebase-admin';
 
-// Initialize Firebase Admin if not already initialized
 if (!admin.apps.length) {
   admin.initializeApp();
 }
 
-/**
- * tRPC Cloud Function endpoint
- */
-export const trpc = onRequest(
-  {
-    cors: true,
-    region: 'us-central1',
+const trpcMiddleware = createExpressMiddleware({
+  router: appRouter,
+  createContext: ({ req, res }) => createContext(req as any, res),
+  onError: ({ error, path }) => {
+    console.error(`tRPC Error on path "${path}":`, error);
   },
-  async (req, res) => {
-    try {
-      const ctx = await createContext(req, res);
+});
 
-      const handler = fetchRequestHandler({
-        endpoint: '/trpc',
-        req: req as any,
-        router: appRouter,
-        createContext: () => ctx,
-        onError: ({ error, path }) => {
-          console.error(`tRPC Error on path "${path}":`, error);
-        },
-      });
-
-      return handler(req as any, res);
-    } catch (error) {
-      console.error('Error in tRPC handler:', error);
-      res.status(500).json({ error: 'Internal server error' });
-    }
+export const trpc = onRequest(
+  { cors: true, region: 'us-central1' },
+  (req, res) => {
+    trpcMiddleware(req as any, res as any, (err) => {
+      if (err) {
+        console.error('Error in tRPC handler:', err);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    });
   }
 );
 
