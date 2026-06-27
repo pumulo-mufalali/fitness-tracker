@@ -1,5 +1,5 @@
 ﻿import { UserProfileCard } from './UserProfileCard';
-import { ThemeToggle } from './theme-toggle';
+import { LogOut } from 'lucide-react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getUserFromFirestore, updateUserProfile, createInitialUserProfile } from '../lib/firebase-user-service';
 import type { User } from '@myfitness/shared';
@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 
 export function ProfilePage({ onClose }: { onClose: () => void }) {
   const queryClient = useQueryClient();
-  const { user, login } = useAuth();
+  const { user, login, logout } = useAuth();
   const { showSuccess, showError } = useToast();
 
   // Always fetch user profile from Firestore if user ID available
@@ -92,16 +92,21 @@ export function ProfilePage({ onClose }: { onClose: () => void }) {
   } : null);
 
   return (
-    <div className="min-h-[70vh] p-6">
+    <div className="min-h-[70vh] p-4 sm:p-6">
       <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Your Profile</h1>
-        </div>
+        <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Your Profile</h1>
+        <button
+          onClick={logout}
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors duration-200"
+        >
+          <LogOut className="w-4 h-4" />
+          Sign Out
+        </button>
       </div>
 
       {/* Show error if there's a problem */}
       {error && (
-        <div className="mb-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800  p-6">
+        <div className="mb-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800  p-4 sm:p-6">
           <p className="text-red-600 dark:text-red-400">Error loading profile. Please try again.</p>
         </div>
       )}
@@ -118,7 +123,7 @@ export function ProfilePage({ onClose }: { onClose: () => void }) {
         <>
           {/* Show helpful message for new users */}
           {(!currentProfile.age || currentProfile.age === 0 || !currentProfile.weightKg || currentProfile.weightKg === 0 || !currentProfile.heightCm || currentProfile.heightCm === 0) && (
-            <div className="mb-6 bg-gray-50 dark:bg-gray-800 border border-blue-200 dark:border-blue-700  p-6">
+            <div className="mb-6 rounded-lg bg-gray-50 dark:bg-gray-800 border border-blue-200 dark:border-blue-700  p-4 sm:p-6">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
                   <span className="text-white text-sm font-bold">!</span>
@@ -133,16 +138,14 @@ export function ProfilePage({ onClose }: { onClose: () => void }) {
             </div>
           )}
           
-          <div className="bg-white/50 dark:bg-gray-800/50  p-6 shadow-lg border border-gray-200 dark:border-gray-700">
-            <UserProfileCard
-              profile={currentProfile}
-              onUpdateProfile={(updates) => updateProfileMutation.mutate(updates)}
-              isUpdating={updateProfileMutation.isPending}
-            />
-          </div>
+          <UserProfileCard
+            profile={currentProfile}
+            onUpdateProfile={(updates) => updateProfileMutation.mutate(updates)}
+            isUpdating={updateProfileMutation.isPending}
+          />
         </>
       ) : (
-        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800  p-6 text-center">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800  p-4 sm:p-6 text-center">
           <p className="text-red-600 dark:text-red-400">No profile data available.</p>
         </div>
       )}
