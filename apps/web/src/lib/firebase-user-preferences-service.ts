@@ -3,7 +3,6 @@ import { db } from './firebase';
 
 export interface UserPreferences {
   lastActivePage?: string;
-  lastSelectedGifId?: string;
   lastVisitedAt?: string; // ISO date string
   preferredView?: 'dashboard' | 'workouts' | 'goals' | 'schedule';
 }
