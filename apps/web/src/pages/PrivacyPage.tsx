@@ -98,11 +98,6 @@ export default function PrivacyPage() {
           >
             ← Back to {APP_NAME}
 
-
-
-
-
-
           </button>
         </div>
       </div>
