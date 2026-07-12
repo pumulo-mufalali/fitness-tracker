@@ -23,3 +23,9 @@ playwright/.cache/
 
 # Storybook
 storybook-static/
+
+# Build artifacts
+.turbo/
+dist/
+*.tsbuildinfo
+.firebase/
