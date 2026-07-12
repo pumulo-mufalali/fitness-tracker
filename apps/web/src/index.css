@@ -7,11 +7,13 @@
   :root {
     --background: 255 255 255;
     --foreground: 10 10 10;
+    --focus-ring: 100 116 139;
   }
 
   .dark {
     --background: 13 17 23;
     --foreground: 230 237 243;
+    --focus-ring: 148 163 184;
   }
 
   body {
@@ -19,6 +21,19 @@
     font-feature-settings: 'cv11', 'ss01';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  :where(button, [role='button'], a, input, select, textarea):focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  :where(select):hover {
+    background-color: rgb(241 245 249 / 0.95);
+  }
+
+  .dark :where(select):hover {
+    background-color: rgb(30 41 59 / 0.95);
   }
 }
 
